@@ -1,0 +1,9 @@
+!2 These are rather experimental, and may change
+^SimpleUse
+>UseDynamicVariable
+>RedefineDynamicVariable
+>MissingDynamicVariable
+>DefineDynamicVariable
+>GetDynamicVariable
+
+^ClassBased

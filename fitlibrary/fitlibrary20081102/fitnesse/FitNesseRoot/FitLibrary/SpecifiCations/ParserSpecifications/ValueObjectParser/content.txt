@@ -1,0 +1,8 @@
+See ${valueObject} for a brief introduction to value objects.
+
+A ${valueObject} can be parsed as a String (eg, a ''Date'') or an embedded table (eg, a ''Point''), depending on how simple it is.
+ * ^StringValue
+ * ^TableValue
+Here's some other specifications that need to be integrated into the above: ^ParseDelegates
+---- * ''Copyright (c) 2006 Rick Mugridge, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

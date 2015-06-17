@@ -1,0 +1,26 @@
+!2 When an action throws a !-FitLibraryResultsException-!, it defines how to color the existing cells, and can add extra cells to the row:
+!**< def
+!define test (!|fitlibrary.specify.workflow.ExceptionAddsCells|
+----
+|add|abc|cells|def|to|gh|
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.workflow.ExceptionAddsCells</td>
+</tr>
+</table>
+<hr><br><table border="1" cellspacing="0">
+<tr><td class="error">add<hr/> <span class="fit_label">whoops</span></td>
+<td class="error">abc<hr/> <span class="fit_label">msg</span></td>
+<td class="ignore">cells</td>
+<td class="pass">def</td>
+<td>to</td>
+<td class="fail">gh <span class="fit_label">expected</span><hr>other <span class="fit_label">actual</span></td>
+<td class="fail"><i>added:</i>abc<hr/>next line</td>
+<td>added: def<hr>next line</td></tr>
+</table>-!|
+
+---- * ''Copyright (c) 2008 Rick Mugridge, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''
+

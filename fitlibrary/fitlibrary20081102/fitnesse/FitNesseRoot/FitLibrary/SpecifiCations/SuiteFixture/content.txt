@@ -1,0 +1,12 @@
+^SpecifyWithoutSuiteFixture
+^SpecifyFilteringWithSelection
+^SpecifyDifferentSuiteFixture
+^SpecifyWithoutSelection
+^SpecifyShareResources
+>SpecifyFixtureClassNameHandled
+
+^SetUpHandling
+^SetUpWithDomainFixture
+
+---- * ''Copyright (c) 2004, 2005, 2006 Rick Mugridge, http://www.RimuResearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

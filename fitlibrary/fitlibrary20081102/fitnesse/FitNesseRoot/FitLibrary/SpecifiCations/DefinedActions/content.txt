@@ -1,0 +1,24 @@
+!3 Building higher-level domain languages
+It can be convenient to define the actions in a high-level domain language in terms of actions in a lower-level language, such as actions that drive web tests. Rather than writing fixture code to translate the high-level actions, ''defined actions'' can be used instead.
+
+This means that a fixture, such as ''!-HtmlFixture-!'', can be used for the low-level of web testing, while still maintaining storytests in high-level terms that are business-oriented instead of being based on the UI.
+!3 DefinedActions
+A defined action:
+ 1 The action definition is in a separate page that must be loaded in a suite prior to its use.
+ 1 A defined action is called with appropriate parameters and the body of the defined action is run after parameter substitutions
+If you want to use defined actions when running a single '''Test''' as well as a '''Suite''':
+ * Introduce a ''!-SuiteSetUp-!'' that includes each of the defined actions. Notice that each defined action needs to finish with {{{----}}} And notice that here we've used .FitLibrary.SpecifiCations.SuiteSetUp so that the macros are available when we run all the specifications as a suite.
+ * Each of the defined action pages is '''not''' marked as being a '''Test'''
+ * The ''!-SuiteSetUp-!'' page is '''not''' marked as being a '''Test'''
+ * Ensure that the file "plugins.properties" as supplied with ''!-FitLibrary-!'' is included in the ''fitnesse'' directory when using ''!-FitNesse20070619-!''.
+ * Ensure that ''!-fitlibrary2.jar-!'' is added to the classpath in "run.bat" or "run.sh", as supplied with ''!-FitLibrary-!''. This includes the plugin code that runs the ''!-SuiteSetUp-!'' when a single '''Test''' is run.
+Then, if you run an individual Test, the ''!-SuiteSetUp-!'' is automatically run first.
+
+>CallPasses
+>CallFails
+^NestedCallPasses
+>NestedCallFails
+>InfiniteCallFails
+>CallWithNestedTablePasses
+^ExpandedBody
+^EmptyBody

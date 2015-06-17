@@ -1,0 +1,6 @@
+FitNesse is a wiki for editing and running storytests.
+
+See http://www.fitNesse.org
+
+---- * ''Copyright (c) 2006 Rick Mugridge, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

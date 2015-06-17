@@ -1,0 +1,47 @@
+!2 An exception is thrown on a setUp row if the setUp() method of the fixture is not called. The tearDown() method throws an exception so that we can see that it's been called. The second table checks that we only do setUp() and tearDown() once on an object.
+!**< def
+!define test (
+!|fitlibrary.specify.SetUpFixtureUnderTest2|
+|a|%|
+|1|2|
+
+|do not do again|
+|a|%|
+|1|2|
+
+|do again|
+|a|%|
+|1|2|
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br><table border="1" cellspacing="0">
+<tr><td colspan="2" class="error">fitlibrary.specify.SetUpFixtureUnderTest2<hr><pre><div class="fit_stacktrace"></div></pre></td>
+</tr>
+<tr><td>a</td>
+<td>%</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td colspan="2">do not do again</td>
+</tr>
+<tr><td>a</td>
+<td>%</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td colspan="2" class="error">do again<hr><pre><div class="fit_stacktrace"></div></pre></td>
+</tr>
+<tr><td>a</td>
+<td>%</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+</tr>
+</table>-!|
