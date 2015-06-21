@@ -40,7 +40,7 @@
 		<javac srcdir="${src}" destdir="${bin}">
 			<classpath>
 				<fileset dir="${fitnesse.dir}">
-					<include name="fitnesse.jar" />
+					<include name="fitnesse-20100303.jar" />
 				</fileset>
 				<fileset dir="${lib}">
 					<include name="**/*.jar" />
@@ -51,7 +51,7 @@
 		<javac srcdir="${test.src}" destdir="${bin}">
 			<classpath>
 				<fileset dir="${fitnesse.dir}">
-					<include name="fitnesse.jar" />
+					<include name="fitnesse-20100303.jar" />
 				</fileset>
 				<fileset dir="${lib}">
 					<include name="**/*.jar" />
@@ -73,7 +73,7 @@
 					<include name="**/*.jar"/>
 				</fileset>
 				<fileset dir="${fitnesse.dir}">
-					<include name="fitnesse.jar" />
+					<include name="fitnesse-20100303.jar" />
 				</fileset>
 		  	</classpath>
 			<batchtest fork="yes" haltonfailure="yes" haltonerror="yes" filtertrace="no">
@@ -88,7 +88,7 @@
 	</target>
 	
 	<target name="start-fitnesse">
-		<java jar="${fitnesse.dir}/fitnesse.jar" dir="${fitnesse.dir}" fork="true" spawn="true">
+		<java jar="${fitnesse.dir}/fitnesse-20100303.jar" dir="${fitnesse.dir}" fork="true" spawn="true">
 			<arg value="-r"/>
 			<arg value="FitNesseRoot"/>
 			<arg value="-p"/>
@@ -110,7 +110,7 @@
 		<java classname="fitnesse.Shutdown" fork="true">
 			<classpath>
 				<fileset dir="${fitnesse.dir}">
-					<include name="fitnesse.jar" />
+					<include name="fitnesse-20100303.jar" />
 				</fileset>
 			</classpath>
 			<arg value="-h"/>
@@ -140,7 +140,7 @@
 					<include name="**/*.jar"/>
 				     </fileset>
 				     <fileset dir="${fitnesse.dir}">
-					<include name="fitnesse.jar" />
+					<include name="fitnesse-20100303.jar" />
 					<include name="fitlibrary.jar" />
 				     </fileset>
 			  	</classpath>
