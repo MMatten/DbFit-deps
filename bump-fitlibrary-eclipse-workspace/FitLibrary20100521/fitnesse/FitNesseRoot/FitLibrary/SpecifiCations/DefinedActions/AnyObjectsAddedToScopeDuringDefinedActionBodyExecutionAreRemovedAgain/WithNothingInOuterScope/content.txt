@@ -1,0 +1,43 @@
+!**< def
+!define test (|clear defined actions|
+
+|define actions at|.FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions|
+
+|''set expand defined actions''|true|
+
+|''def action''|
+
+|''temporarily in scope''|
+)
+
+*!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|
+|!-<table border="1" cellspacing="0">
+<tr><td>clear defined actions</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td>define actions at</td>
+<td><a href="FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions">.FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions</a></td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td><i>set expand defined actions</i></td>
+<td>true</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td class="pass"><i>def action</i></td>
+<td bgcolor=#DADAFF> <span class="fit_label">Defined action call <a href='FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions'>.FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions</a>:</span><table border="1" cellspacing="0">
+<tr><td class="pass">def action 2</td><td bgcolor=#DADAFF> <span class="fit_label">Defined action call <a href='FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions'>.FitLibrary.SpecifiCations.DefinedActions.AnyObjectsAddedToScopeDuringDefinedActionBodyExecutionAreRemovedAgain.DefinedActions</a>:</span><table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.definedAction.TemporaryFixturing</td></tr>
+<tr><td class="pass">temporarily in scope</td></tr>
+</table></td></tr>
+</table></td></tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td class="error"><i>temporarily in scope</i><hr/> <span class="fit_label">Missing class or Missing method. Possibly:<ul><li>public Type getTemporarilyInScope() { }</li><li>public Type temporarilyInScope() { }</li></ul></span></td>
+</tr>
+</table>-!|
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/fitnesse-20110104.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/hamcrest-all-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/jmock-2.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/jmock-junit4-2.5.1.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/ognl-2.7.2.jar"/>
+	<classpathentry kind="lib" path="C:/dbfit/bump-fitlibrary-eclipse-workspace/fitlibrary-2.0-from-Zip/fitnesse/lib/poi-3.1-FINAL-20080629.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

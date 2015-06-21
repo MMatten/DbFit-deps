@@ -1,0 +1,150 @@
+<project name="FitLibrary" default="jar" basedir=".">
+	<property name="home" value="${basedir}" />
+	<property name="fitnesse.dir" value="${home}/fitnesse" />
+	<property name="lib" value="${fitnesse.dir}/lib" />
+	<property name="src" value="${home}/src" />
+	<property name="bin" value="${home}/bin" />
+	<property name="test.src" value="${home}/test" />
+	<property name="port" value="8080" />
+	<property name="fitlibraryweb.dir" value="../fitlibraryweb" />
+	
+	<!-- batch runner properties -->
+	<property name="showpassesinreport" value="true" />   <!-- true or false -->
+	<property name="results-dir" value="${home}/runnerResults" />  
+	<property name="timeout" value="600000" />  <!-- 10 mins default timeout -->  
+
+	<target name="jar" depends="clean, compile, junit, jar-no-test" description="Create fitlibrary jar file in local FitNesseServer directory"/>
+	
+	<target name="jar-no-test" depends="clean, compile">
+	    <echo message="Create fitlibrary jar file in local FitNesse"/>
+	    <jar destfile="${fitnesse.dir}/fitlibrary.jar" basedir="bin"/>
+	    <echo message="Create source zip file"/>
+	    <zip destfile="${lib}/src/fitlibrarySrc.zip">
+	        <fileset dir="src"/>
+	    </zip>
+	    <copy todir="${fitlibraryweb.dir}/fitnesse">
+			<fileset file="${fitnesse.dir}/fitlibrary.jar" />
+	    </copy>
+	    <copy todir="${fitlibraryweb.dir}/fitnesse/lib/src">
+			<fileset file="${lib}/src/fitlibrarySrc.zip" />
+	    </copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${bin}" />
+		<echo message="lib is ${lib}"/>
+		<javac srcdir="${src}" destdir="${bin}">
+			<classpath>
+				<fileset dir="${fitnesse.dir}">
+					<include name="fitnesse-20100303.jar" />
+				</fileset>
+				<fileset dir="${lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<!-- we don't have the test dir in the downloaded sources
+		<javac srcdir="${test.src}" destdir="${bin}">
+			<classpath>
+				<fileset dir="${fitnesse.dir}">
+					<include name="fitnesse-20100303.jar" />
+				</fileset>
+				<fileset dir="${lib}">
+					<include name="**/*.jar" />
+				</fileset>
+
+			</classpath>
+		</javac>
+                -->
+	</target>
+	
+	<target name="junit" description="run the junit tests">
+		<junit fork="yes" dir="${home}" showoutput="yes" printsummary="false" outputtoformatters="true">
+			<formatter type="brief" useFile="false"/>
+			<classpath>
+				<dirset dir="${bin}">
+					<include name="**"/>
+				</dirset>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+				<fileset dir="${fitnesse.dir}">
+					<include name="fitnesse-20100303.jar" />
+				</fileset>
+		  	</classpath>
+			<batchtest fork="yes" haltonfailure="yes" haltonerror="yes" filtertrace="no">
+				<!-- We don't have the test directory in the downloaded sources
+				<fileset dir="${test.src}">
+				  <exclude name="**/TestFitLibraryRunner.java"/>
+				  <include name="**/Test*.java"/>
+				</fileset>
+				-->
+			</batchtest>
+	    </junit>
+	</target>
+	
+	<target name="start-fitnesse">
+		<java jar="${fitnesse.dir}/fitnesse-20100303.jar" dir="${fitnesse.dir}" fork="true" spawn="true">
+			<arg value="-r"/>
+			<arg value="FitNesseRoot"/>
+			<arg value="-p"/>
+			<arg value="${port}"/>
+			<arg value="-o"/>
+			<arg value="-e"/>
+			<arg value="0"/>
+			<jvmarg value="-Xms128m"/>
+			<jvmarg value="-Xmx256m"/>
+		</java>
+	    <echo message="Waiting for FitNesse to start on port ${port}" />
+		<waitfor maxwait="30" maxwaitunit="second" checkevery="100"  timeoutproperty="fitness.failed">
+			<http url="http://localhost:${port}"/>
+		</waitfor>
+	    <fail if="fitness.failed">FitNesse failed to start...</fail>
+	</target>
+
+	<target name="stop-fitnesse">
+		<java classname="fitnesse.Shutdown" fork="true">
+			<classpath>
+				<fileset dir="${fitnesse.dir}">
+					<include name="fitnesse-20100303.jar" />
+				</fileset>
+			</classpath>
+			<arg value="-h"/>
+			<arg value="localhost"/>
+			<arg value="-p"/>
+			<arg value="${port}"/>
+		</java>
+	</target>
+	
+	<target name="batch-run-specifications">
+		<batch-run suite="FitLibrary.SpecifiCations" timeout="600000"/>
+	</target>
+	
+	<macrodef name="batch-run">
+		<attribute name="suite"/>
+		<attribute name="timeout" default="600000"/> <!-- 10 mins default timeout --> 
+		<sequential>
+	                <echo message="Batch run of @{suite} with fitnesse at ${fitnesse.dir} and results at ${results-dir}" />
+			<java classname="fitlibrary.batch.FitLibraryRunner" fork="true" dir="${fitnesse.dir}" timeout="@{timeout}" failonerror="true">
+				<arg value="-suiteName"/>    <arg value="@{suite}"/>
+				<arg value="-fitNesseDiry"/> <arg value="."/>
+				<arg value="-resultsDiry"/>  <arg value="${results-dir}"/>
+				<arg value="-showPasses"/>   <arg value="${showpassesinreport}"/>
+				
+				<classpath>
+				    <fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				     </fileset>
+				     <fileset dir="${fitnesse.dir}">
+					<include name="fitnesse-20100303.jar" />
+					<include name="fitlibrary.jar" />
+				     </fileset>
+			  	</classpath>
+			</java>
+		</sequential>
+	</macrodef>
+</project>

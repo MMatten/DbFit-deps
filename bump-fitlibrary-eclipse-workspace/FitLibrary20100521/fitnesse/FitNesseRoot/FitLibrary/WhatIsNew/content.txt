@@ -1,0 +1,13 @@
+!1 This Release:
+|!2 >May2010Release|''Details of changes in this release''|
+
+Some changes may break backwards compatibility (as explained further in >May2010Release):
+
+ * ''!-DomainFixture-!'' is no longer the default wrapper for POJOs
+ * ''Template''s have been removed, as they're completely superceded by ''defined actions''
+ * The underlying implementation of ''!-FitLibrary-!'' has changed considerably in some areas. This may require recompilation of fixtures that depend on the interbnal implementation.
+
+----!1 Earlier Releases:
+ * !2 ^October2009Release
+ * !2 ^July2009Release
+ * !2 >November2008Release
