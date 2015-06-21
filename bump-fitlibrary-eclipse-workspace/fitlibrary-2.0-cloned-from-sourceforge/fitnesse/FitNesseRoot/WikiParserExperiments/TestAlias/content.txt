@@ -1,0 +1,31 @@
+!2 Correct: assumes the url is correct without checking it
+asdasd [[aasd][adad]] fasfasdf
+
+!2 Space in "] ]" wrecks it
+asdasd [[aasd][adad] ] fasfasdf
+
+!2 Has to end on the same line:
+[[adas][asasdad
+]]
+
+!2 It can it have spacs in second run?
+[[wwwwww][ss ss]]
+
+!3 Can use a define in it
+!define x {TestAlias}
+[[defined][${x}]]
+
+[[defined twice][${x}${x}]]
+
+[[defined twice with dot][${x}.${x}]]
+
+!define test {Test}
+!define alias {Alias}
+
+[[combine][${test}${alias}]]
+
+
+!3 Cannot use define for important lexical aspect
+!define openClose (][)
+
+[[open close${openClose} link]

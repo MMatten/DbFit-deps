@@ -1,0 +1,35 @@
+ * In !-FitLibrary-! we do xpath matching using the '''matches''' keyword:
+
+|get|the cat in the hat|'''matches'''|cat|
+
+ * Of course we could have more simply just used '''contains''' nstead of the matches clause as the match contains no special regex metacharacters. '''contains''' the simpler 'string contains' fixture method :
+
+|get|the cat in the hat|'''contains'''|cat|
+
+ * In regex a '.' means match 'any character',  so we can match 'cat' or 'cap' in the sample phrase with:
+
+|get|the cat in the hat|matches|ca.|
+|get|the cap in the hat|matches|ca.|
+
+ * We can can also check something '''does not match''' by using the fixture method with the same name:
+
+|get|the cat in the hat|'''does not match'''|bat|
+|get|the cap in the hat|'''does not match'''|ba.|
+
+ * Regular expressions with the matches and contains are both '''case sensitive''':
+
+|get|the cat in the hat|does not contain|CAT|
+|get|the cat in the hat|does not match|CAT|
+|get|the cat in the hat|does not match|CA.|
+
+ * You can 'or' matches together with the | character: 
+
+!note If you look at the source of this test you'll notice that the | character needs to be escaped in fitnesse with !- !-  -! -!
+|get|there is a mouse in the house|matches|!-there is a (mouse|ghost|draught) in the house-!|
+|get|there is a ghost in the house|matches|!-there is a (mouse|ghost|draught) in the house-!|
+|get|there is a draught in the house|matches|!-there is a (mouse|ghost|draught) in the house-!|
+|get|there is a television in the house|does not match|!-there is a (mouse|ghost|draught) in the house-!|
+
+----!2 Next
+#
+On the [[next page of this tutorial][QuantifiersMatchNumberOfOccurences]] we show how to match a number of occurences using 'quantifiers'.

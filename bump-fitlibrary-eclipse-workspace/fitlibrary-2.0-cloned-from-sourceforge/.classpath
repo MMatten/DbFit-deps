@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="fitnesse/lib/hamcrest-all-1.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/jmock-2.5.1.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/jmock-junit4-2.5.1.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/junit-4.6.jar" sourcepath="C:/cygwin/home/Rick/srcLib/junit-4.8.2-src.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="../javaDocs/junit4.6/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="fitnesse/lib/log4j-1.2.16.jar" sourcepath="C:/cygwin/home/Rick/srcLib/log4j-1.2.16">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/cygwin/home/Rick/javaDocs/log4j-1.2.16/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="fitnesse/lib/ognl-2.7.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/poi-3.1-FINAL-20080629.jar"/>
+	<classpathentry kind="lib" path="fitnesse/fitnesse.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

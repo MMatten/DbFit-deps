@@ -1,0 +1,13 @@
+''italics
+|1|2|
+
+end italics''
+#
+---!3 Unclosed bold is not rendered as bold!
+'''bold ''italics''
+next
+'''
+'''bold
+
+
+asasd

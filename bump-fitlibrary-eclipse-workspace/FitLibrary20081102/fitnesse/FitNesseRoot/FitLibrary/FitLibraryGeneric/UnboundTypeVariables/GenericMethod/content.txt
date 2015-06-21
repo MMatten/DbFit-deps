@@ -1,0 +1,41 @@
+!***< def
+!define t (
+|''colour''|red|
+
+)
+!define test (
+!|fitlibraryGeneric.specify.unbound.MethodHasUnboundTypeVariable|
+
+|''actions''|
+
+|'''check'''|''same''|${t}|${t}|
+
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br><table border="1" cellspacing="0">
+<tr><td>fitlibraryGeneric.specify.unbound.MethodHasUnboundTypeVariable</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><i>actions</i></td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td class="error"><b>check</b><hr/> <span class="fit_label">Type variable T is unbound</span></td>
+<td><i>same</i></td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>colour</i></td>
+<td>red</td>
+</tr>
+</table>
+<br></td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>colour</i></td>
+<td>red</td>
+</tr>
+</table>
+<br></td>
+</tr>
+</table>
+<br>-!|

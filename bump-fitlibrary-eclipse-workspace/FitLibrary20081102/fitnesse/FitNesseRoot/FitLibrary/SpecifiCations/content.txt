@@ -1,0 +1,31 @@
+ * Here we specify ${fitLibrary} by example, using ${fitLibrary} tables
+ * The following assumes considerable familiarity with the ideas of ${fitLibrary}
+ * This is '''not''' intended as a tutorial. See .FitLibrary.UserGuide for that.
+
+|^ReadingSpecifications|''The format of the storytests/specifications''|
+
+||!3 ''Storytests for specifying:''|
+|^DomainWorkflow|''As with ^DoWorkflow, but with support for three phases of ${workflow}'': ${setup}, ${actions} and ${checks}|
+|^DoWorkflow|''A sequence of actions on a system, starting in some state (!-DoFixture-!)''|
+|^CollectionSpecifications|''Various collections of elements, such as lists, sets, maps, arrays, etc (both checking and setup)''|
+|^BusinessRules|''Calculation rules, constraints, and combinations''|
+|^DomainObject|''The property values of ${domainObject}s (both checking and setup)''|
+|^DomainAggregate|''The aggregate structure of ${domainObject}s''|
+|^SpecialisedTables|''Grids of values, images, HTML lists, file comparisons, etc''|
+
+|^SuiteFixture|''How the same suite of storytests can be used to test a system in very different ways''|
+|^DynamicVariables|''How variables can be used in storytests at runtime''|
+|^DefinedActions|''Parameterised actions can be defined within storytests''|
+|>SelectFixture|''Switches between several named do fixtures''|
+|^GoingIntoFlow|''Using !-FitLibraryServer-!, it's no longer necessary for the first table to have a !-DoFixture-! table in order to be in flow''|
+
+|^ParserSpecifications|''How values are parsed from strings and embedded tables''|
+|^TechnicalSpecifications|''Detailed specifications that are more likely to be of interest to those who port ${fitLibrary} to other languages''|
+|^JavaSpecific|''Details that are specific to Java and may not be implemented in other languages''|
+|^AlienEvaluator|''How ${fitLibrary} inter-operates with ${fit}''|
+|^ExperiMental|''Some experimental features that may well be dropped''|
+
+Contents in alphabetical order:
+|!contents|
+---- * ''Copyright (c) 2004, 2005, 2006, 2007, 2008 ${rick}, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

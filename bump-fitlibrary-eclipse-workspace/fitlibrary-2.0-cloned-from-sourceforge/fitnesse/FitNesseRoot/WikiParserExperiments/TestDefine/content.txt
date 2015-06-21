@@ -1,0 +1,58 @@
+!define a {|a|}
+
+${a}
+
+----!3 define
+[[a][http://asd.com]]
+!define a {''AA}
+!define b.2_2 {BB''
+CC}
+
+!define b1 {http://} ${b1}aaHttp.com
+!define b2 {http://aaHttp.com} ${b2}
+!define b3 {http://aaHttp} ${b3}.com
+!define b3b {http://aaHttp} ${b3b}.com  http://${b3b}.com
+!define b3c {http://a} ${b3c}.com  http://${b3c}.com
+!define b3d {http://aa} ${b3d}.com  http://${b3d}.com
+!define b3e {[[a][b]]} ${b3e}.com  http://${b3e}.com
+!define b1 {http://aaa} ${b1}aaHttp.com
+
+!define b4 {aa.com} http://${b4}
+
+!define followedByTable {aa.com}
+|a|
+
+!define c {aa.com aa[[} - http://a${c}a  - http://a${c}${c}a   - http://a${c} ${c}a
+- ${c} - [[${c}][http://a${c}a]]
+
+!define left {l} !img -${left} img.jpg
+
+!define across { aaa
+bbb}
+
+!c ${across}
+http://${across}
+
+!define a {A}
+!define b (${a}B)
+!define a (AA)
+
+${b}
+
+!define aaaaa 
+ {aad}
+
+
+${a} ${b.2_2}
+
+!define z {Z}
+${z}
+
+!define aa bb {12}
+
+${aa bb}
+
+!define a -b {AB}
+${a-b}
+
+!define c {

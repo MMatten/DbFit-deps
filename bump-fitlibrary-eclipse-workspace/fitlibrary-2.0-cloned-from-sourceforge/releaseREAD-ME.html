@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>FitLibrary.FitNesseReleaseReadMe</title>
+	</head>
+	<body>
+
+<h1><i>FitLibrary For FitNesse</i></h1>
+
+This contains the latest release of the <i>FitLibrary</i> for <i>FitNesse</i> users.
+
+<p>Note the change to the name of the fitlibrary jar to <i>fitlibrary-2.0.jar</i>, which requires a change to your path in FitNesse, as shown below.
+
+<ul>
+<li>This release of FitLibrary needs to be added to a FitNesse system before it can be used.<p/>
+
+<li>FitLibrary has been tested with the <i>FitNesse</i> release 20110104. Some parts, such as batch running and load-defined-actions-slowly, will not work with earlier versions of FitNesse.<p/>
+
+<li>The FolderRunner parts of FitLibrary have not been tested with this version.<p/>
+
+<li>In the following, it's assumed that you are already familiar with <i>FitNesse</i>.<p/>
+
+</ul>
+
+
+<h3>FitNesse configuration for using <i>FitLibrary</i></h3>
+
+To run FitLibrary from Fitnesse, it is necessary to include the following in your test page or in one of it's ancestor pages (notice the change here):
+<pre>
+!path fitlibrary-2.0.jar
+!path fitnesse.jar
+!path lib/*.jar
+!define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}
+</pre>
+
+Note the !path for the <i>lib</i> directory, which needs to contain <i>log4j-1.2.16.jar</i> for FitLibrary to work.
+
+<h3>Latest Changes to <i>FitLibrary</i></h3>
+
+See the page .FitLibrary.WhatIsNew for details of the latest changes, along with links to the corresponding specifications.
+
+
+<h3>Supplied <i>FitLibrary</i> files</h3>
+
+The <i>fitnesse</i> directory within the <i>FitLibrary</i> release contains the following files and subdirectories (notice the change in name of the fitlibrary jar file):
+
+<br/>
+<pre>
+  build.xml - Ant build file for FiLibrary
+  fitnesse
+    fitLibrary-2.0.jar
+    run.bat
+    FitLibraryLogger.properties -- properties for logging
+    FixturingLogger.properties
+    log4j.properties
+    FitNesseRoot
+        files
+            dots
+                -- files used in graphics examples
+            gameImages
+                -- files used in graphics examples
+        FitLibrary
+            UserGuide
+                 -- Pages for the user guide
+            SpecifiCations
+                 -- Pages for storytests that specify FitLibrary
+     lib
+        -- Extra jars that may be needed (log4j is essential)
+        fitBook.jar
+        hamcrest-all-1.2.jar
+        jmock-2.5.1.jar
+        jmock-junit4-2.5.1.jar
+        junit-4.6jar
+        log4j-1.2.16.jar
+        ognl-2.7.2.jar
+        poi-3.1-FINAL-20080629.jar
+        rentEz.jar
+        src
+           -- source code and ant build for FitLibrary
+           fitBookSrc.jar -- source code for examples from the Fit Book
+           fitLibrarySrc-2.0.jar -- source code for FitLibrary
+           rentEzSrc.jar -- source code for example RentEz application
+</pre>
+
+
+<h3>Updating <i>FitLibraryForFitNesse</i> in your existing <i>FitNesse</i> system</h3>
+
+If you want to keep any changes you've made to the pages in the user guide, or associated example code, you may like to save them first.
+<br/><br/>On Windows, to update just the <i>FitLibrary</i> release:<br/>
+
+<ul>
+
+	<li>Ensure you have a backup copy of your existing <i>FitNesse</i> system first.</li>
+	<li>Drop the folder <i>fitnesse</i> inside this <i>FitLibrary</i> release onto the folder <i>fitnesse</i> of your existing <i>FitNesse</i> system.</li>
+
+	<li>A <i>Confirm Folder Replace</i> dialog will appear: "This folder already contains a folder named 'fitnesse'. If the files in the existing folder have the same name as files in the folder you are moving or copying, they will be replaced. Do you still want to move or copy the folder?"</li>
+	<li>If you're happy to replace the <i>FitLibrary</i> files concerned, click <i>Yes to All</i>. This will not change or remove any other files/pages.</li>
+	<li>If not, click <i>No</i>.</li>
+
+</ul>
+
+<h3>Links on Front Page</h3>
+
+To make it easy to access the <i>FitLibrary</i> user guide, you may like to add the following to the front page:<br/><hr/>
+<pre>
+    |FitLibrary.UserGuide|
+</pre>
+<hr/>
+
+<h3>Source Code</h3>
+
+The Java source for the <i>FitLibrary</i> and example fixtures are supplied in this release, in the <b>lib/src</b> subdirectory.
+
+<br/>
+
+<h3>Any Suggestions?</h3>
+
+Any suggestions for improvements in this release approach are most welcome.
+
+<br/><br/>
+Rick Mugridge, <a href="http://www.RimuResearch.com">http://www.RimuResearch.com</a>.
+<br/>
+Altered October 2011<br/>
+
+</body>
+</html>

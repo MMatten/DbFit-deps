@@ -1,0 +1,6 @@
+${fit} was developed and released as open-source by Ward Cunningham in 2003.
+
+See http://fit.c2.com
+
+---- * ''Copyright (c) 2006 ${rick}, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

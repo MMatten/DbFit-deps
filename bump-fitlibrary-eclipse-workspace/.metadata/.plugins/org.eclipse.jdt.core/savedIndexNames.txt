@@ -1,18 +1,1 @@
-INDEX VERSION 1.127+C:\dbfit\bump-fitlibrary-eclipse-workspace\.metadata\.plugins\org.eclipse.jdt.core
-3065295643.index
-3733204262.index
-2702721016.index
-4108881468.index
-245286709.index
-196625261.index
-4201369704.index
-2250243377.index
-2456437650.index
-3140014426.index
-1636558710.index
-2805123055.index
-17251191.index
-1826705624.index
-89281496.index
-115506772.index
-3325216259.index
+INDEX VERSION 1.127+C:\dbfit\dbfit-deps\bump-fitlibrary-eclipse-workspace\.metadata\.plugins\org.eclipse.jdt.core
