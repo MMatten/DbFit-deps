@@ -1,0 +1,4 @@
+This is an application object that's being specified and tested with storytests. In general, it may be the whole SystemUnderTest.
+
+---- * ''Copyright (c) 2006 Rick Mugridge, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

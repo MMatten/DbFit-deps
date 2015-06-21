@@ -1,0 +1,24 @@
+!3 A ${show} is missing with only a ${sut} (no ${domainAdapter})
+!**< def
+!define test (!|fitlibrary.specify.missingMethod.ShowInJustSut|
+
+|''actions''|
+
+|'''check'''|''colour''|red|
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.missingMethod.ShowInJustSut</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><i>actions</i></td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><b>check</b></td>
+<td><i>colour</i></td>
+<td class="error">red<hr/> <span class="fit_label">EITHER Colour is (1) a Value Object. So missing parse method: public static Colour parse(String s) { } in class fitlibrary.specify.missingMethod.ShowInJustSut$Colour; OR (2) an Entity. So missing finder method: public Colour findColour(String key) { } in class fitlibrary.specify.missingMethod.ShowInJustSut</span></td>
+</tr>
+</table>-!|

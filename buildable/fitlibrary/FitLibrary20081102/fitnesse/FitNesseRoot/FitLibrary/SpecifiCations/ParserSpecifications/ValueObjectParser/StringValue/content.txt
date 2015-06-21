@@ -1,0 +1,9 @@
+For a ''value object'' to be represented as a String, it needs either:
+ * A ''public static Object parse(String)'' method in the class; and/or
+ * A ''delegate parser'' that will handle parsing a String into an object of the ''value object'' class
+  * A ''delegate parser'' is needed if the value object belong to a class that you can't change. Eg, if you're using a provided ''Date'' or ''Point'', etc
+
+^SelfParseString, where a ''value object'' class has a ''parse()'' method
+^DelegateParseString, where a delegate parses for a specific ''value object'' class
+---- * ''Copyright (c) 2006 Rick Mugridge, http://www.rimuresearch.com''
+ * ''Released under the terms of the GNU General Public License version 2 or later.''

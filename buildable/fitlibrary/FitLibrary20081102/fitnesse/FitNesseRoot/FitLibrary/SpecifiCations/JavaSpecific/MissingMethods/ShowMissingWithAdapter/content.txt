@@ -1,0 +1,24 @@
+!3 A ${show} is missing with a ${domainAdapter}
+!**< def
+!define test (!|fitlibrary.specify.missingMethod.ShowInDomainAdapter|
+
+|''actions''|
+
+|'''check'''|''colour''|red|
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.missingMethod.ShowInDomainAdapter</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><i>actions</i></td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><b>check</b></td>
+<td><i>colour</i></td>
+<td class="error">red<hr/> <span class="fit_label">Missing show method: public String showColour(Colour arg) { } in class fitlibrary.specify.missingMethod.ShowInDomainAdapter</span></td>
+</tr>
+</table>-!|

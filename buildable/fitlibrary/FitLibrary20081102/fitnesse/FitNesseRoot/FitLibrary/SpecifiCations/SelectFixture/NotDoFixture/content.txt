@@ -1,0 +1,19 @@
+!3 The class is not a !-DoFixture-! or !-DoTraverse-!
+!**< def
+!define test (!|fitlibrary.SelectFixture|
+
+!|add|fitlibrary.SetFixture|as|first|
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.SelectFixture</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td class="error">add<hr/> <span class="fit_label">Class must be a DoFixture or a DoTraverse</span></td>
+<td>fitlibrary.SetFixture</td>
+<td>as</td>
+<td>first</td>
+</tr>
+</table>-!|
