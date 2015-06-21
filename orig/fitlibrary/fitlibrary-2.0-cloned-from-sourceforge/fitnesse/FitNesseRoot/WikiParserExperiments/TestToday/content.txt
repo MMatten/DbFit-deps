@@ -1,0 +1,20 @@
+!2 Correct
+!today
+
+!today (MMM)
+
+!2 with define
+!define m {MMM}
+!today (${m})
+
+!2 with define with brackets
+!define mB {(MMM)}
+!today ${m}
+
+!2 Odd cases
+!today/
+!today +1/
+!today (MMM)
+
+!2 Minus MMM
+!today -MMM

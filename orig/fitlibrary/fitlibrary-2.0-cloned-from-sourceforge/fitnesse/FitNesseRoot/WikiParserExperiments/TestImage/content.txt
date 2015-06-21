@@ -1,0 +1,8 @@
+!2 incorrect ones
+!img asdada adasdasd
+!img-1 ass
+!img -r ass
+
+!2 With define
+!define x {abc def}
+!img ${x} extra

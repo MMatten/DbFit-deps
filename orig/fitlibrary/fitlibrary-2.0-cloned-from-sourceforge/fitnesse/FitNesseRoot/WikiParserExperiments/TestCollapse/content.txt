@@ -1,0 +1,20 @@
+!* WikiWord other
+This ''italics''
+*!
+
+!* WikiWord nested define
+!define a {|a|}
+${a}
+*!
+
+!*   WikiWord other
+This ''italics''
+*!
+
+!*** WikiWord other
+This ''italics''
+***!abc
+
+!*** Table inside
+|a|b|c|
+***!def

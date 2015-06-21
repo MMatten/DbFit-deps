@@ -1,0 +1,12 @@
+!*< def
+!define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}
+!path lib/*.jar
+!define COMMAND_PATTERN { java -Xms128m -Xmx256m  -cp %p %m  }
+*!
+This tutorial provides a general introduction to regular expressions and how they are used in !-FitLibrary-!.
+
+>BasicMatchingAndUsingRegexInFitLibrary
+>QuantifiersMatchNumberOfOccurences
+>MatchingRangesOfNumbersAndCharacters
+>CharacterClassesAndAnchors
+>GroupsAllowYouToHarvestData

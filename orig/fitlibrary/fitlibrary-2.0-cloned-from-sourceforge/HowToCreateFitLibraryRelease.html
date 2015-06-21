@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>How To Create a FitLibrary Release</title>
+	</head>
+	<body>
+
+<h1>Steps in Creating a FitLibrary Release</h1>
+
+Several manual steps are currently required to create a <i>FitLibrary</i> Release:
+
+<ul>
+<li>Update the documentation, including latest changes.
+<li>Build <i>fitlibrary.jar</i>
+<li>Test that the FitLibrary specs, tutorials, etc all pass when run as suites within FitNesse
+<li>Test that the FitLibrary specs all run in batch
+<li>Build the release as <i>FitLibrary20100507.zip</i> (with the date corresponding to today's date)
+<li>Check that the above can be unzipped and work correctly with a fresh copy of FitNesse (within that FitNesse and in batch)
+<li>Push any source changes up to SourceForge.
+<li>Release <i>FitLibrary20100507.zip</i> on to SourceForge
+</ul>
+
+<p>Later, all but the first step and the last two steps will be done through a CI process. That can be done once:
+<ul>
+<li>The batch run of the FitLibrary specs all pass (two image ones currently fail).
+<li>There are <i>SpiderFixture</i>-based storytests for running suites within a running <i>FitNesse</i> system that themselves can be run in batch.
+</ul>
+
+<p> Details of the steps follow.
+
+<h1>1. Update FitLibrary Documentation</h1>
+
+<p>Update the documentation, including:
+<ul>
+<li><a href="http:localhost:8980/FitLibrary.WhatIsNew">FitLibrary.WhatIsNew</a>
+<li>Tutorials, user guide, references
+<li><a href="http:localhost:8980/FitLibrary.SpecifiCations">FitLibrary.SpecifiCations</a>
+</ul>
+
+<h1>2. Build fitlibrary.jar</h1>
+
+<p>Within the git fitlibrary directory, either:
+
+<ul>
+<li>Run <i>buildJar.bat</i>; or
+<li><i>ant jar</i>
+</ul>
+
+<p>This will also run the unit tests. If you don't want them to be run, use the ant target <i>jar-no-test</i> instead.
+
+
+<h1>3. Test FitLibrary from within FitNesse</h1>
+
+Run the following suites within <i>FitNesse</i>:
+
+<ul>
+<li>FitLibrary.SpecifiCations
+<li>FitLibrary.BeginningTutorial
+</ul>
+
+<h1>4. Test FitLibrary runs in Batch</h1>
+
+<p>Within the git <i>fitlibrary</i> directory, either:
+
+<ul>
+<li>Run <i>batchRunFitLibrarySpecifications.bat</i>; or
+<li><i>ant batch-run-specifications</i>
+</ul>
+
+<p>Note that 2 or 3 storytests will fail:
+
+<ul>
+<li>Two are image-based ones that fail because the image file accesses need to be made to work in batch as well as when running under <i>FitNesse</i>.
+<li>A stopwatch storytest sometimes fails in batch because of timing issues; this needs to be fixed to make it pass consistently.
+</ul>
+
+<h1>5. Build the Release</h1>
+
+<p>The release is made as a zip file containing:
+
+<ul>
+<li><i>fitlibrary.jar</i> and various other jar files
+<li>All the appropriate <i>FitNesse</i> pages and supporting files.
+</ul>
+
+<p>This is configured so that the zip file can be unzipped and the contents dropped onto an existing <i>FitNesse</i> in the file system, as detailed in the <a href="releaseREAD-ME.html">releaseREAD</a>.
+
+<p>Within the git <i>fitlibrary/fitnesse</i> directory, either:
+
+<ul>
+<li>Run <i>releaseFitLibrary.bat</i>; or
+<li><i>ant -buildfile release.xml release</i>
+</ul>
+
+This creates the zip file, such as <i>FitLibrary20100507.zip</i> inside <i>Creations</i>.
+
+<h1>6. Check the Release</h1>
+
+<p>The final check ensures that <i>FitLibrary</i> runs with a fresh copy of <i>FitNesse</i>.
+
+<p>Within the git <i>fitlibrary/fitnesse</i> directory:
+
+<ul>
+<li><i>ant -buildfile release.xml setUpReleaseForTest</i>
+</ul>
+
+<p>This builds a fresh copy of <i>FitNesse</i> in <i>Creations/ReleaseTests/Test20100507</i> (or other date) and adds in the latest <i>FitLibrary</i> from the zip file (eg, <i>FitLibrary20100507.zip</i>).
+
+<p>It's now ready to be manually tested:
+<ul>
+<li>Run batch within <i>Creations/ReleaseTests/Test20100507</i> directory, either:
+<ul>
+<li>Run <i>batchRunFitLibrarySpecifications.bat</i>; or
+<li><i>ant batch-run-specifications</i>
+</ul>
+<li>Run the storytests within this version of <i>FitNesse</i> by:
+<ul>
+<li>Running <i>runFitNesse.bat</i> (note that other running copies of <i>FitNesse</i> may need to be shut down first).
+<li>Point the browser at the appropriate localhost port and test the various suites, as listed in Step 3 above.
+</ul>
+</ul>
+
+<h1>7. Push Source Changes to SourceForge</h1>
+
+<p>Use <i>git</i> to <i>push</i> any source changes up to SourceForge.
+
+<h1>8. Release FitLibrary to SourceForge</h1>
+
+<p>Upload the <i>FitLibrary</i> zip file (eg, <i>FitLibrary20100507.zip</i>) up to SourceForge as a release.
+
+<h1>9. Inform others of the Release</h1>
+
+<p>Announce on the <i>FitNesse</i> and <i>FitLibrary</i> email groups that there is a new release.
+
+<br/><br/>
+Rick Mugridge, <a href="http://www.RimuResearch.com">http://www.RimuResearch.com</a>.
+<br/>
+Altered May 2010<br/>
+
+</body>
+</html>

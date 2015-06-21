@@ -1,0 +1,26 @@
+Some text !see .FrontPage
+!see .FrontPage
+
+See can have styled text after it:
+!see .FrontPage '''other''' stuff
+
+See has to have a wiki word after it:
+!see frontPage '''other''' stuff
+
+See can't have a table after it:
+!see .FrontPage |a|
+
+See can have non-wiki word characters after its wiki word:
+!see .FrontPage/2
+
+!sea .FrontPage
+
+!2 with define
+!define x {.FrontPage}
+!see ${x} Other
+!see ${x}.OtherPage
+
+!2 with invalid define
+!define x {.FrontPage OtherPage}
+!see ${x} Other
+

@@ -1,0 +1,5 @@
+1 !style_error(hello) !style_error(''hello'')
+ * !style_error(''hello'')
+2 !style_error(hello
+''hello'')
+3 !style_error(hello!style_pass{hello ) } )

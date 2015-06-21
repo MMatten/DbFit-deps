@@ -1,0 +1,36 @@
+!2 Ordinary:
+!include .FrontPage aaa
+!2 -c:
+!include -c .FrontPage aaa
+!2 -seamless
+!include -seamless .FrontPage aaa
+!2 -c - seamless
+!include -c -seamless .FrontPage aaa
+!2 -wrong
+!include -wrong FrontPage
+!2 frontPage:
+!include frontPage
+
+!2 With define
+!define page (.FrontPage)
+
+!include ${page}
+
+!2 With define extended
+!define page (.FrontPage)
+
+!include ${page}.OtherPage
+
+!2 With invalid define
+!define page (.FrontPage bb)
+
+!include ${page}
+
+!2 With define for args
+
+!define arg {-c}
+!include ${arg} .FrontPage
+
+!2 Followed by table:
+!include .FrontPage aaa
+|a|

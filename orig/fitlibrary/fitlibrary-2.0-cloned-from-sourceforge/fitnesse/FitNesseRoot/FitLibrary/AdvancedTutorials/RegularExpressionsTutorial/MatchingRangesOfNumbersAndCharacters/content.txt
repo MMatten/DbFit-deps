@@ -1,0 +1,75 @@
+ * You can match a set of individual characters by placing them in square brackets (i.e. [cbh]at will match cat, bat and hat):
+
+|get|cat|matches|[cbh]at|
+|get|bat|matches|[cbh]at|
+|get|hat|matches|[cbh]at|
+|get|cut|does not match|[cbh]at|
+|get|sat|does not match|[cbh]at|
+|get|first place|matches|[r1]st place|
+|get|1st place|matches|[r1]st place|
+
+ * Repeat sets of square brackets to match multiple sets of characters:
+
+|get|times|matches|t[iar][mli][ep]s|
+|get|tales|matches|t[iar][mli][ep]s|
+|get|trips|matches|t[iar][mli][ep]s|
+|get|tasks|does not match|t[iar][mlp][ep]s|
+
+ * Square brackets can also contain ranges of characters i.e. [a-z], remember regex is case insensitive so you may also need [A-Z]:
+
+|get|Ate pie|matches|[A-C].*[p-s]|
+|get|Bet red|matches|[A-C].*[p-s]|
+|get|Cut slack|matches|[A-C].*[p-s]|
+|get|Drop that|does not match|[A-C].*[p-s]|
+
+ * Numerics can be ranges as well:
+
+|get|there are 174 moons in our solar system|matches|there are [1-2][1-9][1-9] moons|
+|get|there are 374 moons in our solar system|does not match|there are [1-2][1-9][1-9] moons|
+|get|there are 17 moons in our solar system|does not match|there are [1-2][1-9][1-9] moons|
+|get|there are 1745 moons in our solar system|does not match|there are [1-2][1-9][1-9] moons|
+|get|there are 1745 moons in our solar system|does not match|there are [1-2][1-9][1-9] moons|
+
+ * Multiple ranges can be combined together in the same set of square brackets. i.e. So to match alphanumeric characters a-z, A-Z and 0-9:
+
+|get|is alphanumeric AAA yes|matches|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+|get|is alphanumeric 1Ab yes|matches|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+|get|is alphanumeric abc yes|matches|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+|get|is alphanumeric 123 yes|matches|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+|get|is alphanumeric 1An yes|matches|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+|get|is not alphanumeric "A" no|does not match|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+|get|is not alphanumeric a,b no|does not match|alphanumeric [A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]|
+
+ * Use ^ character inside square brackets (the ^ must be the first character after the [) to check the characters or ranges are NOT there:
+
+|get|letters abc|matches|letters a[^d]c|
+|get|letters adc|does not match|letters a[^d]c|
+|get|letters cab|matches|letters [abc][^def][abc]|
+|get|letters bbb|matches|letters [abc][^def][abc]|
+|get|letters acc|matches|letters [abc][^def][abc]|
+|get|letters dbc|does not match|letters [abc][^def][abc]|
+|get|letters afc|does not match|letters [abc][^def][abc]|
+|get|letters fff|does not match|letters [abc][^def][abc]|
+
+ * Use curly brackets {n} to match a number of occurences of the preceding character. In this example we also use \d which is just short hand to match 'any digit'. We'll talk more about these character classes in the next section..
+
+|get|the word zoo has exactly two o's|matches|the word zo{2} has|
+|get|this phone number 202-456-1111 has 10 digits with a dash separator|matches|[0-9]{3}-[0-9]{3}-[0-9]{4}|
+|get|this phone number 202-456-1111 has 10 digits with a dash separator|matches|\d{3}-\d{3}-\d{4}|
+|get|this phone number 202-456-1234 has 10 digits with a dash separator|matches|[0-9]{3}-[0-9]{3}-[1-4]{4}|
+|get|this phone number 202-456-1235 has 10 digits with a dash separator|does not match|[0-9]{3}-[0-9]{3}-[1-4]{4}|
+
+ * Use {n,} for 'n' or more or {x,y} for 'x' through 'y' inclusive. 
+
+|get|three digits 123|matches|digits \d{3,}|
+|get|fours digits 1234|matches|digits \d{3,}|
+|get|five digits 54321|matches|digits \d{3,}|
+|get|five digits 54321|matches|digits [1-5]{3,}|
+|get|six digits 654321 matches 3 to 5 because even through there are 6 digits there are also 5!|matches|digits \d{3,5}|
+|get|six digits 654321 thats better because expect the 6th character to NOT be a digit|does not match|digits \d{3,5}[^0-9]|
+|get|two digits 99|does not match|digits \d{3,}|
+|get|lots of t's   STARTttSPACEtttSPACEttttSPACEtttttSPACEttttttDONE|matches|STARTt{2}.*t{2,}.*t{2,4}.*t{5}.*t{5,}DONE| 
+
+----!2 Next
+#
+On the [[next page of this tutorial][CharacterClassesAndAnchors]] we show how to match specific character classes and special characters.
