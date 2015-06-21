@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<project name="Fit for Java" default="normal" basedir=".">
+  <description>fit - Framework for integrated test (Java implementation)</description>
+
+  <!-- input -->  
+  <property name="root.dir" value="../.." />
+  <property name="source.dir" value="src" />
+  <property name="spec.dir" value="${root.dir}/spec" />
+  <property name="examples.dir" value="${root.dir}/examples" />
+  <property name="doc.dir" value="doc" />
+  <property name="junit.jar" value="tools/ant/lib/junit.jar" />
+  <property name="license.file" value="license.txt" />
+
+  <!-- output -->
+  <property name="output.dir" value="output" />
+  <property name="class.dir" value="${output.dir}/classes" />
+  <property name="jar.dir" value="${output.dir}/jars" />
+  <property name="test.dir" value="${output.dir}/test" />
+  <property name="examples-out.dir" value="${output.dir}/examples" />
+  <property name="spec-out.dir" value="${output.dir}/spec" />
+  <property name="release.dir" value="${output.dir}/release" />
+  
+  <!-- 
+  ** dirs **
+  -->
+  <target name="dirs">
+    <mkdir dir="${output.dir}" />
+    <mkdir dir="${class.dir}" />
+    <mkdir dir="${jar.dir}" />
+    <mkdir dir="${test.dir}" />
+    <mkdir dir="${examples-out.dir}" />
+    <mkdir dir="${spec-out.dir}" />
+  </target>
+  
+  <!-- 
+  ** build **
+  -->
+  <target name="build" depends="dirs" description="Build project">
+    <javac srcdir="${source.dir}" destdir="${class.dir}" classpath="${junit.jar}" />
+  </target>
+
+  <!-- 
+  ** test **
+  -->
+  <target name="test" depends="build" description="Test project">
+    <junit haltonfailure="true">
+      <classpath path="${class.dir}" />
+      <batchtest fork="no">
+        <fileset dir="src">
+          <include name="**/*Test.java"/>
+        </fileset>
+      </batchtest>
+      <formatter type="brief" usefile="false" />
+    </junit>
+  </target>
+    
+  <!-- 
+  ** examples **
+  -->
+  <target name="examples" depends="build" description="Run examples">
+    <java classname="fit.FileRunner" classpath="${class.dir}" fork="true" failonerror="false"  >
+      <arg value="${examples.dir}/MusicExample.html"/>
+      <arg value="${examples-out.dir}/MusicExample.html"/>
+    </java>
+    <java classname="fit.FileRunner" classpath="${class.dir}" fork="true" failonerror="false"  >
+      <arg value="${examples.dir}/CalculatorExample.html"/>
+      <arg value="${examples-out.dir}/CalculatorExample.html"/>
+    </java>
+    <java classname="fit.FileRunner" classpath="${class.dir}" fork="true" failonerror="false"  >
+      <arg value="${examples.dir}/arithmetic.html"/>
+      <arg value="${examples-out.dir}/arithmetic.html"/>
+    </java>
+  </target>
+
+  <!-- 
+  ** spec **
+  -->
+  <target name="spec" depends="build" description="Run Fit specification">
+    <java classname="fit.FileRunner" classpath="${class.dir}" fork="true" failonerror="true" >
+      <arg value="${spec.dir}/index.html"/>
+      <arg value="${spec-out.dir}/index.html"/>
+    </java>
+  </target>
+
+  <!-- 
+  ** jars **
+  -->
+  <target name="jars" depends="build">
+    <jar destfile="${jar.dir}/fit.jar" basedir="${class.dir}" />
+  </target>
+
+  <!-- 
+  ** clean **
+  -->
+  <target name="clean" description="Delete generated files" >
+    <delete dir="${output.dir}" />
+  </target>
+
+  <!-- 
+  ** normal **
+  -->
+  <target name="normal" depends="build, test, spec" description="Do everyday build and test" />
+
+  <!-- 
+  ** release **
+  -->
+  <target name="release" depends="clean, build, test, spec, examples, jars" description="Create a tested release">
+    <copy todir="${release.dir}">
+      <fileset dir="${source.dir}" includes="${license.file}" />
+      <fileset dir="${jar.dir}" />
+      <fileset dir="${doc.dir}" />
+    </copy>
+
+    <copy todir="${release.dir}/examples/input">
+      <fileset dir="${examples.dir}" includes="**" />
+    </copy>
+    <copy todir="${release.dir}/examples/output">
+      <fileset dir="${output.dir}/examples" includes="**" />
+    </copy>
+    <copy todir="${release.dir}/examples">
+      <fileset dir="${source.dir}" includes="eg/**" />
+    </copy>
+
+    <copy todir="${release.dir}/spec/input">
+      <fileset dir="${spec.dir}" includes="**" />
+    </copy>
+    <copy todir="${release.dir}/spec/output">
+      <fileset dir="${output.dir}/spec" includes="**" />
+    </copy>
+    <copy todir="${release.dir}/spec">
+      <fileset dir="${source.dir}" includes="fat/**" />
+    </copy>
+
+    <copy todir="${release.dir}/source">
+      <fileset dir="${root.dir}">
+        <exclude name="imp/**" />
+      </fileset>
+    </copy>
+    <copy todir="${release.dir}/source">
+      <fileset dir="${root.dir}">
+        <include name="imp/java/**" />
+        <exclude name="imp/java/${output.dir}/**" />
+      </fileset>
+    </copy>
+
+    <zip destfile="${output.dir}/fit-java.zip" basedir="${release.dir}" />
+  </target>
+
+</project>

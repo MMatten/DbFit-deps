@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="src" path="src"/>
+    <classpathentry kind="lib" path="tools/ant/lib/optional.jar"/>
+    <classpathentry kind="lib" path="tools/ant/lib/xercesImpl.jar"/>
+    <classpathentry kind="lib" path="tools/ant/lib/ant.jar"/>
+    <classpathentry kind="lib" path="tools/ant/lib/junit.jar"/>
+    <classpathentry kind="lib" path="tools/ant/lib/xml-apis.jar"/>
+    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SDK 1.4.2_04"/>
+    <classpathentry kind="output" path="build"/>
+</classpath>

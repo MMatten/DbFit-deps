@@ -1,0 +1,45 @@
+<html>
+<head><title>How to Release Fit</title></head>
+<body>
+
+
+
+<h1>How to Release Fit</h1>
+
+<ol type="I">
+  <li>Prep</li>
+  <ol type="1">
+    <li>Update changes.txt</li>
+    <li>Update readme.html</li>
+    <li>Update .NET AssemblyInfo.cs version number</li>
+  </ol>
+
+  <br />
+  <li>Build Java and .NET versions</li>
+  <ol type="1">
+    <li>"build release"</li>
+    <li>Double-check release directories</li>
+    <li>Rename file to include version number (e.g., fit-java-1.1.zip)</li>
+    <li>Commit changes to CVS</li>
+    <li>Tag CVS with name of release (e.g., Release1-1)</li>
+  </ol>
+
+  <br />
+  <li>Upload</li>
+  <ol type="1">
+    <li>Upload files to <a href="ftp://upload.sourceforge.net/incoming">ftp://upload.sourceforge.net/incoming</a> (anonymous login)</li>
+    <li>Register release with SourceForge at <a href="https://sourceforge.net/project/admin/editpackages.php?group_id=85646">https://sourceforge.net/project/admin/editpackages.php?group_id=85646</a></li>
+  </ol>
+
+  <br />
+  <li>Update Website</li>
+  <ol type="1">
+    <li>Change current release on <a href="http://fit.c2.com/login/wiki.cgi?page=WelcomeVisitors">WelcomeVisitors</a></li>
+    <li>Update <a href="http://fit.c2.com/login/wiki.cgi?DownloadNow">DownloadNow</a></li>
+    <li>Update <a href="http://fit.c2.com/login/wiki.cgi?LatestChanges">LatestChanges</a></li>
+  </ol>
+</ol>
+
+
+</body>
+</html>

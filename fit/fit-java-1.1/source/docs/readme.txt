@@ -1,0 +1,1 @@
+Documentation common to all implementations of Fit will go in this directory.

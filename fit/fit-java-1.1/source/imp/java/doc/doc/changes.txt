@@ -1,0 +1,144 @@
+Changes in Fit-Java 1.1:
+Produced by Jim Shore.  Released 7 April 2004.
+    * Updated for Fit Spec v1.1.  Contributed by Jim Shore.
+    * Changed ColumnFixture headers to allow multiple words.  Contributed by Rick Mugridge.
+    * Added fixture argument list support.  Contributed by Rick Mugridge from FitNesse source code.
+    * Added support for nested tables.  Contributed by Rick Mugridge.
+
+
+Changes in Fit-Java 1.0:
+No changes: identical to RC1.  Released 18 Nov 2004.
+
+
+Changes in Fit-Java 1.0 RC1:
+Produced by Jim Shore and Ward Cunningham.  Released 31 Aug 2004.
+    * Improved whitespace handling.  Contributed by Jim Shore.
+    * Microsoft Word's "smart quotes" are turned into normal quotes.  Contributed by Jim Shore.
+    * Java line feed characters are turned into HTML <br /> tags (and vice-versa).  Contributed by Jim Shore.
+    * WikiRunner is deprecated in favor of a smarter FileRunner.  Contributed by Ward Cunningham.
+    * Created parse specification and associated fat fixtures.  Contributed by Jim Shore.
+
+
+Changes in Fit-Java b030915j
+Produced by Ward Cunningham and Jim Shore.  Released 15 Sept 2003.
+    * Add statics for some color codes.  Contributed by Jim Shore and Ward Cunningham.
+    * Add boolean support to PrimitiveFixture.  Contributed by Jim Shore and Ward Cunningham.
+    * Add fat fixtures Table, Color, Equals, Divide, Money.  Contributed by Jim Shore and Ward Cunningham.
+    * Add FitSpecification.html document.  Contributed by Jim Shore and Ward Cunningham.
+
+
+Fit was created and the Java version implemented by Ward Cunningham.  The following
+history was taken from the Fit web site.
+
+Download in http:files/JavaDownloads/fit-b030425j.tgz
+
+    * Invert nesting of <font> and <pre> in Fixture.exception.
+    * Change ColumnFixture to call execute() even without checks.
+    * Add package fat (fit acceptance test).
+
+Download in http:files/JavaDownloads/fit-b030420j.tgz
+
+    * Added BinaryChop example.
+    * Added trim to elements in ArrayAdapter.
+    * Print null elements as bland in ArrayAdapter.
+    * Correct jpg reference in CalculatorExample.
+    * Correct handling of Array types in RowFixture.
+
+Download http:files/JavaDownloads/fit-b021104j.tgz
+
+    * Change TimedActionFixture to fill empty splits with &nbsp;.
+    * Add a few more tests of unescape(String) to FrameworkTests.
+    * Change Summary lines to be gray as per ColorCode.
+    * Add elapsed run time to Summary.
+    * Change Fixture to have non-static Summary.
+    * Improve calculation of ScientificPrecision.
+    * Report values for unspecified cells.
+    * Change TypeAdapter to print null as "null".
+    * Add AllPairsExample (a "macroscopic" fixtures)
+    * Add FileFootnotes to ExampleTests fixture.
+    * Run ExampleTests in FrameworkTests.
+    * Change TypeAdapter to print array elements with spaces.
+
+Download http:files/JavaDownloads/fit-b021021j.tgz
+
+    * Add Counts class replacing static variables for right, wrong, etc.
+    * Change reflection to check for unexpected polymorphism.
+    * Add example that runs all ExampleTests.
+
+Download http:files/JavaDownloads/b021011.tgz
+
+    * Refactor and expand MusicExample
+    * Handle nested InvocationTargetException
+
+Download http:files/JavaDownloads/b021007.tgz
+
+    * Change ignoring so that only non-blank cells are ignored
+    * Change row matching to skip ignored columns
+    * Add color annotation (red/green) to count line of Summary
+    * Add TimedActionFixture which reports time of each step
+    * Add ColumnIndex (a RowFixture) to test legal column heads
+    * Add simulated realtime tests to MusicExample
+
+Download http:files/JavaDownloads/b021004.tgz
+
+    * Correct matching of duplicates in RowFixture
+          o (see degenerate cases in MusicExample) 
+    * Simplify bindMethod in ColumnFixture
+    * Make use of ScientificPrecision optional.
+    * Add reset() and execute() methods to ColumnFixture
+    * Make all fields and methods be public, private or protected
+    * Refactor main() to simplify new runners
+
+Download http:files/JavaDownloads/b020927.tgz
+
+    * Add escape of "<" and "&" in actual values
+    * Improve handling of parse errors
+    * Add fixture for WebPageExample
+    * Change FrameworkTest to be date locale independent
+
+Download http:files/JavaDownloads/a020912.tar.gz
+
+    * Change "don't care" signal to blank.
+    * Add license notice and info.
+
+Download a020910.tar.gz (withdrawn)
+
+    * Add logic to accept n/a to omit checks if we "don't care."
+    * Package as "fit" for framework and "eg" for examples.
+    * Add RowFixture
+    * Add MusicExample as package "eg.music".
+
+Download a020905.tar.gz (withdrawn)
+
+    * Correct unformat() for complex formats.
+    * Moved main to FileRunner
+    * Replaced WikiFixture with WikiRunner
+    * Extend Fixture to parse Date
+    * Add TypeAdapter support for ALL primitive types.
+
+Download a020902.tar.gz (withdrawn)
+
+    * Add ActionFixture and some examples that use it.
+    * Extend TypeAdapter to handle Arrays.
+    * Modified spelling of Adapter to be consistent.
+
+Download a020827.tar.gz (withdrawn)
+
+    * Add logic to accept error as suggested in ExpectedErrors.
+    * Add Division fixture/implementation for SimpleExample.
+    * Removed type conversion in Fixture replaced by TypeAdapter
+
+Download a020823.tar.gz (withdrawn)
+
+    * Add boolean and fixed float/double in TypeAdapter.
+    * Add fixture/implementation for CalculatorExample.
+    * Add WikiFixture with main that looks for <wiki> ... </wiki> tags
+
+Download a020819.tar.gz (withdrawn)
+
+    * Parse HtmlTables from files.
+    * Apply test through variations on the Fixture.
+    * Run DataDriven test with the the ColumnFixture.
+    * Access variables and methods through the TypeAdapter.
+    * Write reports with results annotated in place.
+    * Test floats and doubles with ScientificPrecision.

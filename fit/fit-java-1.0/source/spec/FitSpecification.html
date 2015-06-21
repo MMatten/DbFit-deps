@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0050)http://192.168.2.114/fit/wiki.cgi?FitSpecification -->
+<HTML><HEAD><TITLE>Wiki: Fit Specification</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1264" name=GENERATOR></HEAD>
+<BODY vLink=#806040 link=#d06040 bgColor=#ffffff>
+<H1><A href="http://192.168.2.114/fit/search.cgi?search=FitSpecification">Fit 
+Specification</A></H1><WIKI>Here we describe the framework in sufficient 
+precision to be useful to framework implementors. We will use the framework to 
+test itself. This leads to circular logic that can be unraveled more easily by 
+the computer than a beginner learning the framework. Beginners might want to <A 
+href="http://192.168.2.114/fit/wiki.cgi?ReadMore">ReadMore</A> of this site 
+before continuing here. 
+<P>Each of the following sections will become a specification document in its 
+own right. Each bullet with a section is to become the <A 
+href="http://192.168.2.114/fit/wiki.cgi?FitAcceptanceTests">FitAcceptanceTests</A>. 
+
+<P><A 
+href="http://localhost:8080/cgi-bin/run.cgi">http://localhost:8080/cgi-bin/run.cgi</A> 
+
+<P><A href="http://192.168.2.114/fit/run.cgi">http:run.cgi</A> 
+<P>
+<HR>
+
+<P><STRONG>Parse</STRONG> 
+<P>A parser builds an in memory model of an html document. The model preserves 
+all of the content while exposing table data to further processing. This allows 
+input to be prepared with a variety of tools. 
+<P>
+<UL>
+  <LI>word tables 
+  <LI>excel tables 
+  <LI>wiki tables 
+  <P></P></LI></UL>Tables are sometimes used to format html pages, as is the case 
+with wiki. In this case a unique tag, &lt;wiki&gt;, is used to surround the 
+tables that are to be parsed as tests. 
+<P>
+<UL>
+  <LI>wiki tables within table 
+  <P></P></LI></UL>The visible text within a cell is extracted and treated as a 
+string, free of formatting. 
+<P>
+<UL>
+  <LI>markup tags 
+  <LI>character escapes 
+  <LI>leading and trailing spaces 
+  <P></P></LI></UL>The parsed tables can be modified in memory and a revised 
+document written. 
+<P>
+<UL>
+  <LI>cell background color 
+  <LI>cell contents 
+  <LI>additional rows 
+  <LI>additional columns 
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG>Check</STRONG> 
+<P>Expected values specified in cells are tested for equality with actual values 
+extracted from the program under test. 
+<P>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=4>fat.Equals </TD></TR>
+  <TR>
+    <TD>type </TD>
+    <TD>x </TD>
+    <TD>y </TD>
+    <TD>= </TD></TR>
+  <TR>
+    <TD>boolean </TD>
+    <TD>true </TD>
+    <TD>TRUE </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>integer </TD>
+    <TD>00001 </TD>
+    <TD>1 </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>real </TD>
+    <TD>1000 </TD>
+    <TD>1e3 </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>string </TD>
+    <TD>abc </TD>
+    <TD>ABC </TD>
+    <TD>false </TD></TR>
+  <TR>
+    <TD>string </TD>
+    <TD>a b c </TD>
+    <TD>a b c </TD>
+    <TD>true </TD></TR></TBODY></TABLE>
+<P>A sequence of values can be entered and checked as a single (composite) 
+value. 
+<P>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=5>fat.Equals </TD></TR>
+  <TR>
+    <TD>type </TD>
+    <TD>x </TD>
+    <TD>y </TD>
+    <TD>= </TD></TR>
+  <TR>
+    <TD>integers </TD>
+    <TD>1, 3, 5 </TD>
+    <TD>01,03,05 </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>integers </TD>
+    <TD>1, 3, 5 </TD>
+    <TD>01,05,03 </TD>
+    <TD>false </TD></TR>
+  <TR>
+    <TD>booleans </TD>
+    <TD>true, true, false </TD>
+    <TD>true, false </TD>
+    <TD>false </TD></TR>
+  <TR>
+    <TD>strings </TD>
+    <TD>a , b , c </TD>
+    <TD>a,b,c </TD>
+    <TD>true </TD></TR></TBODY></TABLE>
+<P>
+<P>Domain values can be constructed from cell contents. Equality comparisons 
+will be subject to appropriate domain rules (i.e. delegated to the domain 
+objects.) 
+<P>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=4>fat.Equals </TD></TR>
+  <TR>
+    <TD>type </TD>
+    <TD>x </TD>
+    <TD>y </TD>
+    <TD>= </TD></TR>
+  <TR>
+    <TD>date </TD>
+    <TD>Jan 1, 1995 </TD>
+    <TD>January 1, 1995 </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>money </TD>
+    <TD>$10000 </TD>
+    <TD>$10,000.00 </TD>
+    <TD>true </TD></TR></TBODY></TABLE>
+<P>
+<P>Floating point numbers are checked to the precision that is normal in the 
+host language. It is possible for a domain object to infer precision from the 
+string representation of expected values. For example, <A 
+href="http://192.168.2.114/fit/edit.cgi?ScientificDouble">?</A>ScientificDouble 
+checks equality to the precision implied by the number of significant digits in 
+a value. 
+<P>
+<UL>
+  <LI>non-zeros -- 123.45 is 5 digits 
+  <LI>zeros between non-zeros -- 100003 is 6 digits 
+  <LI>zeros in the fraction part -- 12.20 is 4 digits 
+  <LI>but not leading zeros -- 0001000 is 4 digits 
+  <LI>and not exponent digits -- 6.02e23 is 3 digits 
+  <LI>left argument (receiver) controles precision 
+  <P></P></LI></UL>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=4>fat.Equals </TD></TR>
+  <TR>
+    <TD>type </TD>
+    <TD>x </TD>
+    <TD>y </TD>
+    <TD>= </TD></TR>
+  <TR>
+    <TD>real </TD>
+    <TD>123.45 </TD>
+    <TD>123.449 </TD>
+    <TD>false </TD></TR>
+  <TR>
+    <TD>scientific </TD>
+    <TD>123.45 </TD>
+    <TD>123.449 </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>scientific </TD>
+    <TD>100003 </TD>
+    <TD>100003.1 </TD>
+    <TD>true </TD></TR>
+  <TR>
+    <TD>scientific </TD>
+    <TD>100003.1 </TD>
+    <TD>100003 </TD>
+    <TD>false </TD></TR>
+  <TR>
+    <TD>scientific </TD>
+    <TD>12.20 </TD>
+    <TD>12.210 </TD>
+    <TD>false </TD></TR>
+  <TR>
+    <TD>scientific </TD>
+    <TD>12.21 </TD>
+    <TD>12.210 </TD>
+    <TD>true </TD></TR></TBODY></TABLE>
+<P>
+<P>Improperly specified values may throw exceptions which are reported in the 
+cell that contains the invalid number. Improper value detection is only as good 
+as would be expected in the host language. (We are assuming that incorrectly 
+converted values will lead to detected errors elsewhere.) 
+<P>
+<UL>
+  <LI>xyz is not an integer 
+  <LI>10000000000000000000000000 may or may not be an integer 
+  <P></P></LI></UL>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=3>fat.Table </TD></TR>
+  <TR>
+    <TD>fat.Equals </TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>type </TD>
+    <TD>x </TD></TR>
+  <TR>
+    <TD>integer </TD>
+    <TD>200 </TD></TR>
+  <TR>
+    <TD>integer </TD>
+    <TD>xyz </TD></TR></TBODY></TABLE>
+<P>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=3>fat.Color </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>yellow </TD></TR></TBODY></TABLE>
+<P>Some character strings have special meaning outside of type conversion. 
+<P>
+<UL>
+  <LI>blank -- omit check, report value (reported in gray letters) 
+  <LI>error -- expect an error 
+  <P></P></LI></UL>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=3>fat.Table </TD></TR>
+  <TR>
+    <TD>fat.Divide </TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>x </TD>
+    <TD>y </TD>
+    <TD>divide() </TD></TR>
+  <TR>
+    <TD>100 </TD>
+    <TD>2 </TD>
+    <TD>50 </TD></TR>
+  <TR>
+    <TD>100 </TD>
+    <TD>2 </TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>100 </TD>
+    <TD>0 </TD>
+    <TD>error </TD></TR>
+  <TR>
+    <TD>100 </TD>
+    <TD>0 </TD>
+    <TD>&nbsp;</TD></TR></TBODY></TABLE>
+<P>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=3>fat.Color </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD>
+    <TD>white </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD>
+    <TD>white </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD>
+    <TD>green </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD>
+    <TD>gray/white </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD>
+    <TD>green </TD></TR>
+  <TR>
+    <TD>white </TD>
+    <TD>white </TD>
+    <TD>gray/white </TD></TR></TBODY></TABLE>
+<P>The framework looks for parse support in different places. 
+<P>
+<UL>
+  <LI>fixture 
+  <LI>domain object 
+  <LI>type adapter 
+  <P></P></LI></UL>The framework will allow fixtures to implement custom parsing. 
+<P>
+<UL>
+  <LI>yea = true 
+  <LI>nay = false 
+  <P>
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG>Fixture</STRONG> 
+<P>The first cell of a table specifies how that table will be interpreted. 
+Normally this is the name of an object, a Fixture, that is specifically written 
+for this purpose. 
+<P>
+<UL>
+  <LI>case Foo != foo 
+  <LI>package alpha.Foo != beta.Foo 
+  <P></P></LI></UL>By default cells are processed in order, by table, by row 
+within tables, and by cell within rows. Distinct routines handle sequencing 
+(plural) and interpretation (singular). 
+<P>
+<UL>
+  <LI>doTables -- sequence tables within a document 
+  <LI>doTable -- interpret a table 
+  <LI>doRows -- sequence rows within a table 
+  <LI>doRow -- interpret a row 
+  <LI>doCells -- sequence cells within a row 
+  <LI>doCell -- interpret a row 
+  <P></P></LI></UL>The default interpretation of a cell is to mark it as ignored. 
+<P>Cells contain givens or expected results. The fixture is responsible for 
+distinguishing givens from expected results, checking expected results against 
+actuals, and indicating the result with the background annotation as follows. 
+<P>
+<UL>
+  <LI>white -- no check wanted (blank input) 
+  <LI>green -- right: expected equals actual 
+  <LI>red -- wrong: expected not equal actual 
+  <LI>yellow -- exception: trouble computing actual or comparing result 
+  <LI>gray -- ignore: desired check not possible 
+  <P></P></LI></UL>Fixtures cooperate to count the number of each result. 
+<P>
+<UL>
+  <LI>counts accumulate between tables 
+  <LI>counts are summarized as "# right, # wrong, # exceptions, # ignores". 
+  <LI>runner fixtures (e.g. <A 
+  href="http://192.168.2.114/fit/wiki.cgi?AllFiles">AllFiles</A>) can control 
+  accumulation of counts 
+  <P></P></LI></UL>Fixtures cooperate to accumulate state that can be summarized 
+at any point in the processing of a document. 
+<P>
+<UL>
+  <LI>state variables 
+  <LI>state lifetime 
+  <LI>state summary 
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG><A 
+href="http://192.168.2.114/fit/wiki.cgi?PrimitiveFixture">PrimitiveFixture</A></STRONG> 
+
+<P>The primitive fixture does not depend on <A 
+href="http://192.168.2.114/fit/wiki.cgi?TypeAdapter">TypeAdapter</A>. Type 
+specific functions handle all checking. 
+<P>
+<UL>
+  <LI>checkBoolean 
+  <LI>checkInteger 
+  <LI>checkFloat 
+  <LI>checkString 
+  <P>
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG><A 
+href="http://192.168.2.114/fit/wiki.cgi?ColumnFixture">ColumnFixture</A></STRONG> 
+
+<P>A column fixture distinguishes givens from expected values by the form of the 
+column head. 
+<P>
+<UL>
+  <LI>name is setter or field 
+  <LI>name() is getter or field 
+  <LI>camel case -- present value ( ) = presentValue() 
+  <LI>deprecate execute() 
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG><A 
+href="http://192.168.2.114/fit/wiki.cgi?RowFixture">RowFixture</A></STRONG> 
+<P>A row fixture expects all rows to be expected values. The fixture is assumed 
+to have access to actual rows which it pairs with expected rows. 
+<P>
+<UL>
+  <LI>name is field or getter 
+  <LI>name() is getter 
+  <LI>camel case 
+  <P></P></LI></UL>Rows are matched by comparing just enough values from the left 
+most columns to get a unique match. 
+<P>
+<UL>
+  <LI>some given, none actual -- missing row 
+  <LI>none given, some actual -- surplus rows 
+  <LI>one given, one actual -- check remaining columns 
+  <LI>many given, many actual -- match on more columns 
+  <P></P></LI></UL>Missing and surplus rows are marked as such in their first 
+column 
+<P>
+<UL>
+  <LI>each counts as one wrong 
+  <LI>surplus rows added to table in gray 
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG><A 
+href="http://192.168.2.114/fit/wiki.cgi?ActionFixture">ActionFixture</A></STRONG> 
+
+<P>An action fixture distinguishes given from expected values based on keywords 
+in the first column. 
+<P>
+<UL>
+  <LI>enter -- put given in setter or field 
+  <LI>check -- check value with getter or field 
+  <LI>press -- call action (no check other than for execptions) 
+  <LI>start -- new actor 
+  <P></P></LI></UL>An actor represents some interface state such as the currently 
+active window. The actor gives meaning to many of the words in the second column 
+(field to be entered and buttons to be pressed). 
+<P>
+<UL>
+  <LI>actor persists between tables 
+  <LI>initial actor is action fixture (subclass) itself 
+  <LI>start with no argument specifies initial actor 
+  <P></P></LI></UL>Start could have various meanings depending on the nature of 
+the interface being modeled. 
+<P>
+<UL>
+  <LI>create a new actor 
+  <LI>return to an existing actor 
+  <P></P></LI></UL>Other actions, like press, can change the current actor. 
+<P>
+<UL>
+  <LI>replace the current actor with a new actor 
+  <LI>replace the current actor with another preexisting actor 
+  <LI>restore the previous actor 
+  <P></P></LI></UL>Subclasses of action fixture can add new action words. 
+<P>
+<UL>
+  <LI>camel case 
+  <P></P></LI></UL>
+<HR>
+
+<P><STRONG>Runner</STRONG> 
+<P>A runner creates top-level Fixtures and provides them with parsed documents 
+to be annotated. 
+<P>
+<UL>
+  <LI>top-level fixture is instance of Fixture 
+  <P></P></LI></UL>A runner retrieves and disposes of documents as appropriate to 
+its environment. The <A 
+href="http://192.168.2.114/fit/wiki.cgi?FileRunner">FileRunner</A> reads and 
+writes html files. 
+<P>
+<UL>
+  <LI>input-file only -- default output 
+  <LI>input-file output-file -- specific output 
+  <LI>input-directory only -- default output in directory 
+  <LI>input-directory output-directory -- default outputs in specific directory 
+  <LI>index.html result summaries 
+  <LI>- is standard in/out 
+  <P></P></LI></UL>A runner signals the presence of errors to its environment so 
+that subsequent processing can be triggered. 
+<P>
+<UL>
+  <LI>exit status is sum of wrong and exceptions up to 255 
+  <LI>main is factored to simplify <A 
+  href="http://192.168.2.114/fit/edit.cgi?RunnerFixtures">?</A>RunnerFixtures 
+  <P></P></LI></UL>A runner establishes run specific state that may influence 
+loading and/or configuration of the program under test. 
+<P>
+<UL>
+  <LI><A href="http://192.168.2.114/fit/edit.cgi?AssemblyPath">?</A>AssemblyPath 
+  ??? 
+  <P></P></LI></UL>
+<TABLE cellSpacing=0 cellPadding=3 border=1>
+  <TBODY>
+  <TR>
+    <TD colSpan=2>fit.Summary </TD></TR></TBODY></TABLE></WIKI>
+<P>&nbsp; 
+<FORM action=edit.cgi?FitSpecification method=post><INPUT type=submit value=" Edit "> </FORM><BR>Last edited November 
+14, 2003<BR>Return to <A 
+href="http://192.168.2.114/fit/wiki.cgi?WelcomeVisitors">WelcomeVisitors</A> 
+</P></BODY></HTML>
