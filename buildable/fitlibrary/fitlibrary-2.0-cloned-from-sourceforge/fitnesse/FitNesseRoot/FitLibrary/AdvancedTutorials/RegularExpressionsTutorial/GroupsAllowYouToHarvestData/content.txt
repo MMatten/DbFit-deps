@@ -1,0 +1,54 @@
+One of the most powerful aspects of regular expressions is capturing groups. This allows us to extract sections of a source using a regular expression using groups defined in parenthesis. !-FitLibrary-! uses the harvest fixture method to group capture into dynamic variables. 
+
+ * In the two simple scenarios below the digit 3 is extracted from the di3git text because the regular expression has the digit match \d or [0-9] enclosed in parenthesis. This "captured" group is placed into the !-FitLibrary-! dynamic variable that we specified, i.e. ''theDigit'':
+
+|''harvest''|theDigit|''using pattern''|grab the di(\d)git between the letters|''from''|grab the di3git between the letters|
+
+|get|@{theDigit}|is|3|
+
+|''harvest''|theDigit|''using pattern''|di([0-9])git|''from''|grab the di3git between the letters|
+
+|get|@{theDigit}|is|3|
+
+ * You can capture multiple groups by specifiying multiple comma seperated dynamic variables and multiple sets of parenthesis (the number of variables and parenthesis must of course be the same):
+
+|''harvest''|first,second,third|''using pattern''|di(\d)git.*bet(\d)ween.*lett(\d)ers|''from''|grab the di3git bet2ween the lett1ers|
+
+|get|@{first}|is|3|
+|get|@{second}|is|2|
+|get|@{third}|is|1|
+
+|''harvest''|first,second,third|''using pattern''|.*(\d).*(\d).*(\d).*|''from''|grab the di3git bet2ween the lett1ers|
+
+|get|@{first}|is|3|
+|get|@{second}|is|2|
+|get|@{third}|is|1|
+
+ * It is also common to use the .* or other "or more" style syntax with group capture to extract information:
+
+|''harvest''|varsentence|''using pattern''|Sentence: (.*)!|''from''|Sentence: the quick brown fox jumped over the lazy dog!|
+
+|get|@{varsentence}|is|the quick brown fox jumped over the lazy dog|
+
+ * Understanding greedyness
+
+The query below seems fairly simple, "harvest the contents between two xml tags". We define the xpath of a xml tag as <.+>, (< and > are not regex metacharacters they are the literatal open and closing of the xml tag, and .+ states there must be one or more character between them). 
+
+|''harvest''|content|''using pattern''|<.+>(.*)<.+>|''from''|<customer>Bob Roberts</customer><invoice>F10123</invoice>|
+
+However you me be suprised to see the captured content in fact does not contain the customer name, it instead contains the invoice number:
+
+|get|@{content}|'''does not contain'''|Bob Roberts|
+|get|@{content}|'''contains'''|F10123|
+
+The reason for this is that by default regular expression matches are '''greedy''', in other words the .+ inside the first pair of <.+> basically matches any character '''one or more times''' until it hits a closing ">", it knows it still needs to capture a group before finding a closing <.+> element but it '''greedily''' ''eats up'' all of the characters until it hits the opening <invoice> tag. To stop matches being greedy use the '''?''' metacharacter. The  '''?''' can be used after any quantifier, i.e. *?,  +?,  ??,  or {n}?.  Here we fix the problem by simply adding a ? in the first <.+?> to stop it being greedy:
+ 
+|''harvest''|content|''using pattern''|<.+?>(.*)<.+>|''from''|<customer>Bob Roberts</customer><invoice>F10123</invoice>|
+
+|get|@{content}|'''contains'''|Bob Roberts|
+
+* Another way of forcing this match without turning off greedy is to specific match all character except the closing '>' and then expect a literal '>'. See the <[^>]+> at the start of the regex:
+
+|''harvest''|content|''using pattern''|<[^>]+>(.*)<.+>|''from''|<customer>Bob Roberts</customer><invoice>F10123</invoice>|
+
+|get|@{content}|'''contains'''|Bob Roberts|

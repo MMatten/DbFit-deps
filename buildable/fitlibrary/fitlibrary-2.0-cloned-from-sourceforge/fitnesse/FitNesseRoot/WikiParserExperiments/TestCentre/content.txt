@@ -1,0 +1,4 @@
+!c Centered text
+
+!c Centred text followed by table
+|a|

@@ -1,0 +1,24 @@
+ * Use the + character to match '''one or more''' occurences of the '''preceding''' character:
+
+|get|i feel good thank you|matches|i fe+l go+d tha+nk you|
+
+ * Similarly use the * character to match '''zero or more''' occurences of the '''preceding''' character:
+
+|get|off|matches|off*|
+|get|of|matches|off*|
+|get|i feel good thank you|matches|i fe*l go*d N*O*T* *T*H*E*R*E*thank you|
+
+ * The ? metacharacter can be used to match exactly 0 or 1 occurences: 
+
+|get|123|matches|12?3|
+|get|13|matches|12?3|
+|get|1223|does not match|12?3|
+
+ * You often use .* or .+ together to 'skip over' irrelevant bits, i.e. using .* means match 'any character zero or more times':
+
+|get|important bit the rest will be ignored apart from this|matches|important.*apart from this|
+|get|oneskiptwoskipthreefourfive|matches|one.*two.*three.*four.*five|
+
+----!2 Next
+#
+On the [[next page of this tutorial][MatchingRangesOfNumbersAndCharacters]] we show how to match a ranges of numbers and characters.

@@ -1,0 +1,24 @@
+![
+simple plain
+text pasted
+from somewhere
+]!
+
+![
+plain text
+]!
+
+![
+plain text
+''plain'' text
+!-<b>bold
+</b>-!
+
+]!
+
+!2 With define
+!define line {abc def}
+![
+${line}
+ghi
+]!

@@ -1,0 +1,12 @@
+Some text !2 title
+!1 one title
+!2 title
+!4 ''italics'' and plain
+!3 4
+!10 title
+!3a
+!34
+#
+
+!2 Header followed immediately by table
+|a|

@@ -1,0 +1,6 @@
+!note ''abc'' plain
+
+!note aasd ''asdad'' |a| WikiWordq
+
+!note Followed by table
+|a|

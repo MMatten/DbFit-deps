@@ -1,0 +1,57 @@
+ * Use the ^ character to match the start of the line, normally in !-FitLibrary-! you'll be matching against a single line so use ^ to match from the begining of a phrase:
+
+|get|start here|matches|^start|
+|get|Do not start here|matches|start|
+|get|Do not start here|does not match|^start|
+
+ * Similarly you can use $ to match the end of a line
+
+|get|this is the end|matches|end$|
+|get|the end is near|does not match|end$|
+
+ * Therefore to do a verbatim match on some phrase: 
+
+|get|absolute|matches|^absolute$|
+|get|absolute|matches|absolute|
+|get|absolute|matches|^abs.lute$|
+|get|absolute|matches|^abso[l-n]ute$|
+|get|absolutely|matches|absolute|
+|get|absolutely|does not match|^absolute$|
+|get|fabsolute|matches|absolute|
+|get|fabsolute|does not match|^absolute$|
+
+ * Sometimes the metacharacters that make up the regex formal language appear in your source string and you want to match them. Use the \ to 'escape' these characters:
+
+|get|in the string 2+2=4 the plus sign is a regular control characters but the equals is not|'''does not match'''|2+2=4|
+|get|in the string 2+2=4 the plus sign is a regular control characters but the equals is not|matches|2\+2=4|
+|get|i want to match strings only with a . full stop in them|matches|with a . full stop|
+|get|THIS IS BAD i want to match strings only with a ; full stop|matches|with a . full stop|
+|get|THIS IS GOOD i want to match strings only with a ; full stop|does not match|with a \. full stop|
+|get|this equation has lots of metacharacters: $10.00 \ (2^2) = $2.50|matches|metacharacters: \$10\.00 \\ \(2\^2\) = \$2\.50|
+
+ * You can also match using escaped special Character Classes: \d digit, \D not a digit, \w word, \W Not word, \s white space, \S not whitesapce 
+
+|get|space then single digit 9 followed by someword end.|matches|space then single digit \d followed \w|
+|get|space then single digit 9 followed by someword end.|matches|space\sthen\ssingle\sdigit\s\d\sfollowed\s\w|
+|get|word word word word|matches|\w\w\w\w|
+|get|word word word word|does not match|\w\s\w\s\w\s\w|
+|get|word word word word|matches|\w\S\S\w|
+|get|00FA|matches|\d\d\D\D|
+
+ * When matching over multiple lines you can match new lines with \n (newline), Notice the first example does not match because there is no space between the two lines however the whitespace \s meta character will also match newlines. 
+!*< def
+!define lines ({{{line1
+line2
+line3}}})
+*!
+!note here we use a fitnesse variable to create an input with multiple lines but you might encouter multiple lines if you read in a file or parse a PDF body.
+|get|${lines}|'''does not match'''|line1 line2|
+|get|${lines}|matches|line1\sline2\sline3|
+|get|${lines}|matches|line1\nline2\nline3|
+|get|${lines}|matches|line1.line2.line3|
+
+
+----!2 Next
+#
+#
+Finally on the [[next page of this tutorial][GroupsAllowYouToHarvestData]] we show extract variables from regular expressions using groups.

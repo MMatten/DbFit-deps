@@ -1,0 +1,14 @@
+!2 Any leading space + digit means it's a list
+ 2 pages
+ 10 pages
+ 1.0 pages
+ 1e0 pages
+
+ * star
+
+!2 But lists are not considered inside a table
+| 2 pages|
+| 10 pages|
+| 1.0 pages|
+| 1e0 pages|
+| * star|

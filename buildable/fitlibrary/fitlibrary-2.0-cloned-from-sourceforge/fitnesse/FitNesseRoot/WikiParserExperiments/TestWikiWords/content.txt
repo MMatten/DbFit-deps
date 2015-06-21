@@ -1,0 +1,23 @@
+.FrontPage
+FrontPage
+FrontPage2 3
+FrontPage.2 3
+FrontPage.T2 3
+FrontPage.TB 3
+FrontPage.T2B 3
+FrontPage.TaB 3
+AaB
+A2B
+A2B2
+
+.frontPage
+.Frontpage
+frontPage
+Frontpage
+Front_Page. 3
+Front-Page 3
+
+.AaAa <AaAa >AaAa .AaAa.AaAa .AaAa<AaAa .AaAa>AaAa
+
+A1#B
+
