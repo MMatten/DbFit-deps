@@ -80,17 +80,17 @@ public class DomainInjectionTraverse extends Traverse implements TableEvaluator 
         table.error(testResults,new RuntimeException("Don't expect to have this called!"));
         return null;
 	}
-	@Override
+	//@Override
 	public void addNamedObject(String text, TypedObject typedObject, Row row, TestResults testResults) {
 		// TODO Auto-generated method stub
 		// Remove this later
 	}
-	@Override
+	//@Override
 	public void select(String name) {
 		// TODO Auto-generated method stub
 		// Remove this later
 	}
-	@Override
+	//@Override
 	public void runInnerTables(Tables definedActionBody,
 			ITableListener tableListener) {
 		// TODO Auto-generated method stub

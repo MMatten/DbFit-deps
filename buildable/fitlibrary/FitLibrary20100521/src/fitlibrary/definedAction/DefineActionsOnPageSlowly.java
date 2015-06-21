@@ -66,7 +66,7 @@ public class DefineActionsOnPageSlowly extends Traverse {
 	}
 	protected void parseDefinitions(Tables tables, final String className, final String pageName) {
 		new DefinedActionBodyCollector().parseDefinitions(tables, new DefineActionBodyConsumer() {
-			@Override
+			//@Override
 			public void addAction(Tables innerTables) {
 				defineAction(innerTables,className,pageName);
 			}

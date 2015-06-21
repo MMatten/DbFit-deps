@@ -85,7 +85,7 @@ public class DoFlow implements DomainTraverser, TableEvaluator, DoFlower {
 		}
 		tableListener.storytestFinished();
 	}
-	@Override
+	//@Override
 	public void runTable(Table table, ITableListener tableListener) {
 		doFlowOnTable.runTable(table, tableListener, runtime);
 	}
@@ -124,11 +124,11 @@ public class DoFlow implements DomainTraverser, TableEvaluator, DoFlower {
 		for (TypedObject typedObject : typedObjects)
 			setUpTearDown.callTearDownOnSutChain(typedObject.getSubject(), row, testResults);
 	}
-	@Override
+	//@Override
 	public void setCurrentAction() {
 		current = this;
 	}
-	@Override
+	//@Override
 	public void setCurrentCheck() {
 		current = domainCheck;
 	}
@@ -139,25 +139,25 @@ public class DoFlow implements DomainTraverser, TableEvaluator, DoFlower {
 	public RuntimeContextInternal getRuntimeContext() {
 		return runtime;
 	}
-	@Override
+	//@Override
 	public void addNamedObject(String name, TypedObject typedObject, Row row, TestResults testResults) {
 		typedObject.injectRuntime(runtime);
 		setUpTearDown.callSetUpOnSutChain(typedObject.getSubject(), row, testResults);
 		scopeStack.addNamedObject(name, typedObject, row, testResults);
 	}
-	@Override
+	//@Override
 	public void select(String name) {
 		scopeStack.select(name);
 	}
-	@Override
+	//@Override
 	public boolean hasDomainCheck() {
 		return domainCheck != null;
 	}
-	@Override
+	//@Override
 	public void setDomainToCheck() {
 		setCurrentCheck();
 	}
-	@Override
+	//@Override
 	public void setDomainFixture(TypedObject typedResult) {
 		Object subject = typedResult.getSubject();
 		TypedObject sut = typedResult;
@@ -171,7 +171,7 @@ public class DoFlow implements DomainTraverser, TableEvaluator, DoFlower {
 		setRuntimeContextOf(domainCheck);
 		current = domainInject;
 	}
-	@Override
+	//@Override
 	public void setSuite(SuiteEvaluator suiteEvaluator) {
 		if (suiteFixtureOption.isNone())
 			suiteFixtureOption = new Some<SuiteEvaluator>(suiteEvaluator);

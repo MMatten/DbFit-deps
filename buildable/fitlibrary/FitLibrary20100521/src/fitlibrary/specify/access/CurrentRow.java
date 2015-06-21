@@ -11,11 +11,11 @@ import fitlibrary.traverse.RuntimeContextual;
 public class CurrentRow implements RuntimeContextual{
 	private RuntimeContextInternal runtime;
 	
-	@Override
+	//@Override
 	public void setRuntimeContext(RuntimeContextInternal runtime) {
 		this.runtime = runtime;
 	}
-	@Override
+	//@Override
 	public Object getSystemUnderTest() {
 		return null;
 	}

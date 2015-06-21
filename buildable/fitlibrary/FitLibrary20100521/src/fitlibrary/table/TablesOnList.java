@@ -41,13 +41,13 @@ public class TablesOnList extends TableElementOnList<Tables,Table> implements Ta
 	protected Tables newObject() {
 		return new TablesOnList();
 	}
-	@Override
+	//@Override
 	public String report() {
 		StringBuilder builder = new StringBuilder();
 		toHtml(builder );
 		return builder.toString();
 	}
-	@Override
+	//@Override
 	public void print(String heading) {
 		System.out.println("---------Tables for "+heading+":----------");
 		System.out.println(toString());

@@ -59,11 +59,11 @@ public class TableOnParse extends TableElementOnParse<Row> implements Table {
         else
             parse.parts.last().more = row.parse();
     }
-	@Override
+	//@Override
 	public void add(int i, Row row) {
 		throw new RuntimeException("Not implemented");
 	}
-	@Override
+	//@Override
 	public void removeElementAt(int i) {
 		throw new RuntimeException("Not implemented");
 	}
@@ -115,11 +115,11 @@ public class TableOnParse extends TableElementOnParse<Row> implements Table {
 			maxLength = Math.max(maxLength, row.getColumnSpan());
 		return maxLength;
 	}
-	@Override
+	//@Override
 	public boolean isPlainTextTable() {
 		return parse().tag.contains("plain_text_table");
 	}
-	@Override
+	//@Override
 	public void replaceAt(int t, Row row) {
 		row.parse().more = parse().parts.at(t).more;
 		if (t == 0)
@@ -135,22 +135,22 @@ public class TableOnParse extends TableElementOnParse<Row> implements Table {
 		copy.setTrailer(getTrailer());
 		return copy;
 	}
-	@Override
+	//@Override
 	public boolean isEmpty() {
 		return parse.more == null;
 	}
-	@Override
+	//@Override
 	public String getType() {
 		return "Table";
 	}
-	@Override
+	//@Override
 	public boolean hasRowsAfter(Row currentRow) {
 		for (int i = 0; i < size()-1; i++)
 			if (at(i).parse() == currentRow.parse())
 				return true;
 		return false;
 	}
-	@Override
+	//@Override
 	public Table fromAt(int rowNo) {
 		if (rowNo == 0)
 			return this;
@@ -162,7 +162,7 @@ public class TableOnParse extends TableElementOnParse<Row> implements Table {
 			result.add(at(i).deepCopy());
 		return result;
 	}
-	@Override
+	//@Override
 	public Table asTableOnParse() {
 		return this;
 	}

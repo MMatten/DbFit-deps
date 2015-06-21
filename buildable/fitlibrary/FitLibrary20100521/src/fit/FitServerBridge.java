@@ -202,7 +202,7 @@ public abstract class FitServerBridge {
 	}
 
 	class TableReportListener implements ReportListener {
-		@Override
+		//@Override
 		public void tableFinished(Table table) {
 			print("FitServerBridge table is of type "+table.getClass());
 			try {
@@ -213,7 +213,7 @@ public abstract class FitServerBridge {
 				e.printStackTrace();
 			}
 		}
-		@Override
+		//@Override
 		public void tablesFinished(TestResults testResults) {
 			try {
 				FitProtocol.writeCounts(testResults.getCounts(), socketOutput);

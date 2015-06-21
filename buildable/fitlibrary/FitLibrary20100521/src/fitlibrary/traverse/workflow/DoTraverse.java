@@ -199,7 +199,7 @@ public class DoTraverse extends DoTraverseInterpreter implements SpecialActionCo
 		global().logMessage(s);
 	}
 	//--- SHOW
-	@Override
+	//@Override
 	public void show(Row row, String text) {
 		global().show(row, text);
 	}
@@ -625,7 +625,7 @@ public class DoTraverse extends DoTraverseInterpreter implements SpecialActionCo
 		getRuntimeContext().getScope().addGlobal(typedObject);
 		row.at(0).pass(testResults);
 	}
-	@Override
+	//@Override
 	public FitHandler fitHandler() {
 		return getFitHandler();
 	}

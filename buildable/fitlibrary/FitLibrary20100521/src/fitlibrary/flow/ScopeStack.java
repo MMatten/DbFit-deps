@@ -126,21 +126,21 @@ public class ScopeStack implements IScopeStack {
 			return true;
 		return packageName.startsWith("fitlibrary.specify") || packageName.startsWith("fitlibraryGeneric.specify");
 	}
-	@Override
+	//@Override
 	public void temporarilyAdd(Evaluator evaluator) {
 		stack.push(new GenericTypedObject(evaluator));
 	}
-	@Override
+	//@Override
 	public void removeTemporary(Evaluator evaluator) {
 		TypedObject top = stack.pop();
 		if (top.getSubject() != evaluator)
 			throw new RuntimeException("Whoops, temporary was not on the top of the stack!");
 	}
-	@Override
+	//@Override
 	public IScopeState currentState() {
 		final int size = stack.size();
 		return new IScopeState() {
-			@Override
+			//@Override
 			public List<TypedObject> restore() {
 				List<TypedObject> results = new ArrayList<TypedObject>();
 				while (stack.size() > size)
@@ -149,12 +149,12 @@ public class ScopeStack implements IScopeStack {
 			}
 		};
 	}
-	@Override
+	//@Override
 	public void addNamedObject(String name, TypedObject typedObject, Row row, TestResults testResults) {
 		selectObjects.add(typedObject);
 		selectNames.put(name,typedObject);
 	}
-	@Override
+	//@Override
 	public void select(String name) {
 		TypedObject typedObject = selectNames.get(name);
 		if (typedObject == null)
@@ -162,27 +162,27 @@ public class ScopeStack implements IScopeStack {
 		selectObjects.remove(typedObject);
 		selectObjects.add(0,typedObject);
 	}
-	@Override
+	//@Override
 	public void addGlobal(TypedObject typedObject) {
 		globals.add(typedObject);
 	}
-	@Override
+	//@Override
 	public void setAbandon(boolean abandon) {
 		this.abandon  = abandon;
 	}
-	@Override
+	//@Override
 	public boolean isAbandon() {
 		return abandon;
 	}
-	@Override
+	//@Override
 	public boolean isStopOnError() {
 		return stopOnError;
 	}
-	@Override
+	//@Override
 	public void setStopOnError(boolean stop) {
 		this.stopOnError = stop;
 	}
-	@Override
+	//@Override
 	public void switchRuntime(RuntimeContextInternal runtime) {
 		setRuntimeContextOf(flowEvaluator.getSubject(),runtime);
 		for (TypedObject aGlobal: globals)

@@ -42,7 +42,7 @@ public class DynamicVariablesRecordingToFile implements DynamicVariablesRecordin
 			//
 		}
 	}
-	@Override
+	//@Override
 	public boolean isRecording() {
 		return true;
 	}

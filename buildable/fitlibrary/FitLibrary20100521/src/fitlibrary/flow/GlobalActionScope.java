@@ -222,11 +222,11 @@ public class GlobalActionScope implements RuntimeContextual {
 	public void showAsAfterTable(String title,String s) {
 		runtimeContext.showAsAfterTable(title,s);
 	}
-	@Override
+	//@Override
 	public void setRuntimeContext(RuntimeContextInternal runtime) {
 		this.runtimeContext = runtime;
 	}
-	@Override
+	//@Override
 	public Object getSystemUnderTest() {
 		return null;
 	}

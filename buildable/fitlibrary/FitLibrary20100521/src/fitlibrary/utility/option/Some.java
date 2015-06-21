@@ -11,11 +11,11 @@ public class Some<T> implements Option<T>{
 	public Some(T t) {
 		this.t = t;
 	}
-	@Override
+	//@Override
 	public boolean isNone() {
 		return false;
 	}
-	@Override
+	//@Override
 	public boolean isSome() {
 		return true;
 	}

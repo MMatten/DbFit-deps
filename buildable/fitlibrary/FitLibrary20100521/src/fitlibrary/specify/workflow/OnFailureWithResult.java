@@ -17,7 +17,7 @@ public class OnFailureWithResult implements DomainAdapter {
 	public String onFailure() {
 		return "onFailure() called";
 	}
-	@Override
+	//@Override
 	public Object getSystemUnderTest() {
 		return null;
 	}

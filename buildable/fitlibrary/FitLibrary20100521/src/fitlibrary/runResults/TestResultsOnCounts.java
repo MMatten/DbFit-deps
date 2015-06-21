@@ -90,7 +90,7 @@ public class TestResultsOnCounts implements TestResults {
 	private static String backgroundColour(String colour) {
 		return "bgcolor=\""+colour+"\"";
 	}
-	@Override
+	//@Override
 	public void addRights(int extraRight) {
 		counts.right += extraRight;
 	}

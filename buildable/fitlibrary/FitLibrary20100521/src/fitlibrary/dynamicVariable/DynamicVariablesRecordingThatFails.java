@@ -10,15 +10,15 @@ import java.io.IOException;
 import fitlibrary.exception.FitLibraryException;
 
 public class DynamicVariablesRecordingThatFails implements DynamicVariablesRecording {
-	@Override
+	//@Override
 	public void record(String key, String value) {
 		throw new FitLibraryException("Recording file has not been created");
 	}
-	@Override
+	//@Override
 	public void write() throws IOException {
 		throw new FitLibraryException("Recording file has not been created");
 	}
-	@Override
+	//@Override
 	public boolean isRecording() {
 		return false;
 	}

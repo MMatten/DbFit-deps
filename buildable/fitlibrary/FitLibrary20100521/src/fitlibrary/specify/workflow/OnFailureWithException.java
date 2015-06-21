@@ -18,7 +18,7 @@ public class OnFailureWithException implements DomainAdapter {
 	public void onFailure() {
 		throw new FitLibraryException("onFailure() called");
 	}
-	@Override
+	//@Override
 	public Object getSystemUnderTest() {
 		return null;
 	}

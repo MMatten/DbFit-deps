@@ -89,11 +89,11 @@ public class TableOnList extends TableElementOnList<Table,Row> implements Table 
 			maxLength = Math.max(maxLength, row.getColumnSpan());
 		return maxLength;
 	}
-	@Override
+	//@Override
 	public boolean isPlainTextTable() {
 		return getTagLine().contains("plain_text_table");
 	}
-	@Override
+	//@Override
 	public void replaceAt(int t, Row row) {
 		if (t < size())
 			removeElementAt(t);
@@ -116,7 +116,7 @@ public class TableOnList extends TableElementOnList<Table,Row> implements Table 
 	protected Table newObject() {
 		return new TableOnList();
 	}
-	@Override
+	//@Override
 	public boolean hasRowsAfter(Row currentRow) {
 		for (int i = 0; i < size()-1; i++)
 			if (at(i) == currentRow)
@@ -126,7 +126,7 @@ public class TableOnList extends TableElementOnList<Table,Row> implements Table 
 	public Parse asParse() {
 		return asTableOnParse().asParse();
 	}
-	@Override
+	//@Override
 	public Table asTableOnParse() {
 		TableFactory.useOnLists(false);
 		try {

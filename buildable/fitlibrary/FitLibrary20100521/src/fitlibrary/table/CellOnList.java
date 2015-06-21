@@ -264,7 +264,7 @@ public class CellOnList extends TablesOnList implements Cell {
 	protected void appendBody(StringBuilder builder) {
 		builder.append(fullText);
 	}
-	@Override
+	//@Override
 	public void addPrefixToFirstInnerTable(String s) {
 		at(0).setLeader(Fixture.label(s)+getLeader());
 	}

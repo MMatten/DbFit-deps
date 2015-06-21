@@ -89,17 +89,17 @@ public class DomainCheckTraverse extends Traverse implements TableEvaluator {
                 table.at(0).size() == 1 && 
                 table.at(0).at(0).matchesTextInLowerCase("expected",this);
     }
-	@Override
+	//@Override
 	public void addNamedObject(String text, TypedObject typedObject, Row row, TestResults testResults) {
 		// TODO Auto-generated method stub
 		// Remove this later
 	}
-	@Override
+	//@Override
 	public void select(String name) {
 		// TODO Auto-generated method stub
 		// Remove this later
 	}
-	@Override
+	//@Override
 	public void runInnerTables(Tables definedActionBody,
 			ITableListener tableListener) {
 		// TODO Auto-generated method stub

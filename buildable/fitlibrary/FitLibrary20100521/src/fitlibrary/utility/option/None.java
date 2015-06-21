@@ -13,15 +13,15 @@ public class None<T> implements Option<T> {
 	private None() {
 		//
 	}
-	@Override
+	//@Override
 	public boolean isNone() {
 		return true;
 	}
-	@Override
+	//@Override
 	public boolean isSome() {
 		return false;
 	}
-	@Override
+	//@Override
 	public T get() {
 		throw new NullPointerException("There is no element inside None");
 	}

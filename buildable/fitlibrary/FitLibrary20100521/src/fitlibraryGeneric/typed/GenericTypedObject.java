@@ -41,7 +41,7 @@ public class GenericTypedObject implements TypedObject {
 
 	public GenericTypedObject(Object subject, GenericTyped typed) {
 		this(subject,typed,PlugBoard.lookupClosure, new MethodTargetFactory(){
-			@Override
+			//@Override
 			public CalledMethodTarget createCalledMethodTarget(Closure closure, Evaluator evaluator) {
 				return new CalledMethodTarget(closure,evaluator);
 			}});
@@ -72,7 +72,7 @@ public class GenericTypedObject implements TypedObject {
 	protected TypedObject asTypedObject(Object sut) {
 		return new GenericTypedObject(sut);
 	}
-	@Override
+	//@Override
 	public Class<?> classType() {
 		return subject.getClass();
 	}
@@ -94,12 +94,12 @@ public class GenericTypedObject implements TypedObject {
 		return new FieldParser(getTyped().on(evaluator, resultTyped, true),
 				field); // This doesn't handle String result case
 	}
-	@Override
+	//@Override
 	public GetterParser resultParser(Evaluator evaluator, Method method, Class<?> actualResultType) {
 		Typed resultTyped = new GenericTyped(actualResultType,true);
 		return new GetterParser(typed.on(evaluator,resultTyped,true),method);
 	}
-	@Override
+	//@Override
 	public ResultParser resultParser(Evaluator evaluator, Field field, Class<?> actualResultType) {
 		Typed resultTyped = new GenericTyped(actualResultType,true);
 		return new FieldParser(typed.on(evaluator,resultTyped,true),field);
@@ -109,12 +109,12 @@ public class GenericTypedObject implements TypedObject {
 		Type genericParameterType = typed.bind(givenType,describe(method));
 		return new GenericTyped(genericParameterType,true);
 	}
-	@Override
+	//@Override
 	public TypedObject asReturnTypedObject(Object object, Method method) {
 		return new GenericTypedObject(object,
 				new GenericTyped(typed.bind(method.getGenericReturnType(),describe(method))));
 	}
-	@Override
+	//@Override
 	public TypedObject asReturnTypedObject(Object object, Field field) {
 		return new GenericTypedObject(object,
 				new GenericTyped(typed.bind(field.getGenericType(),describe(field))));
@@ -173,11 +173,11 @@ public class GenericTypedObject implements TypedObject {
 	public String toString() {
 		return "GenericTypedObject["+subject+":"+typed+"]";
 	}
-	@Override
+	//@Override
 	public Typed getTyped() {
 		return typed;
 	}
-	@Override
+	//@Override
 	public boolean isNull() {
 		return subject == null;
 	}
@@ -201,7 +201,7 @@ public class GenericTypedObject implements TypedObject {
 			return -123;
 		return subject.hashCode();
 	}
-	@Override
+	//@Override
 	public TypedObject getTypedSystemUnderTest() {
 		if (subject instanceof Evaluator)
 			return ((Evaluator)subject).getTypedSystemUnderTest();
@@ -209,11 +209,11 @@ public class GenericTypedObject implements TypedObject {
 			return new GenericTypedObject(((DomainAdapter)subject).getSystemUnderTest());
 		throw new RuntimeException("No SUT");
 	}
-	@Override
+	//@Override
 	public boolean hasTypedSystemUnderTest() {
 		return subject instanceof DomainAdapter && ((DomainAdapter)subject).getSystemUnderTest() != null;
 	}
-	@Override
+	//@Override
 	public void injectRuntime(RuntimeContextInternal runtime) {
 		if (subject instanceof RuntimeContextual)
 			((RuntimeContextual)subject).setRuntimeContext(runtime);

@@ -16,28 +16,28 @@ public class SpecifyErrorReported implements SpecifyErrorReport {
 	public SpecifyErrorReported(ShowAfter showAfter) {
 		this.showAfter = showAfter;
 	}
-	@Override
+	//@Override
 	public void actualResult(Tables actualTables) {
 		actualTables.print("actual");
 	}
-	@Override
+	//@Override
 	public void sizeWrong(String path, int actualSize, int expectedSize) {
 		showAfterTable("Size differs at "+path+
 				". Was "+actualSize+". Expected " + expectedSize);
 	}
-	@Override
+	//@Override
 	public void cellTextWrong(String path, String actual, String expected) {
 		showAfterTable("Cell text differs at " + path + wasExpected(actual, expected));
 	}
-	@Override
+	//@Override
 	public void leaderWrong(String path, String actual, String expected) {
 		showAfterTable("Leader differs at " + path + wasExpected(actual, expected));
 	}
-	@Override
+	//@Override
 	public void tagLineWrong(String path, String actual, String expected) {
 		showAfterTable("Tag line differs at " + path + wasExpected(actual, expected));
 	}
-	@Override
+	//@Override
 	public void trailerWrong(String path, String actual, String expected) {
 		showAfterTable("Trailer differs at "+ path + wasExpected(actual, expected));
 	}
