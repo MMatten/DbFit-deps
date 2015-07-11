@@ -1,0 +1,9 @@
+!3 Chat System
+Let's look at several storytests for a simple chat room system. This will introduce further ideas about workflow storytests.
+ * ^ChatSystem
+ * ^WhenActionsFail
+ * ^WorkflowSummary
+Code details:
+ * ^WorkflowCode
+ * ^GeneralCodeDetails
+ * ^SetUpTearDown

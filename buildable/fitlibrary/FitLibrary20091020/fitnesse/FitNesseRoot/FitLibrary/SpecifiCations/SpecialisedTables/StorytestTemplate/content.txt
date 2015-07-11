@@ -1,0 +1,10 @@
+^TestPass
+^TestPassWithSeveralActionsInTable
+^TestAllSubstitutionsMade
+^TestErrorsShown
+^TestNoCascadingReplacementsOfParameters
+
+^TestUnknownTemplate
+^TestTemplateBefore
+^WrongNumberOfParameters
+^DuplicateParameterNames

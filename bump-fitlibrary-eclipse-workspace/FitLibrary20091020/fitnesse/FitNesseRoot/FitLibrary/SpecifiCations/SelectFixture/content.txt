@@ -1,0 +1,11 @@
+!3 A SelectFixture makes it easy for a single storytest to use several different ''!-DoFixtures-!'', selecting between them.
+>SelectsWork
+>NotDoFixture
+>SetUpExceptions
+>SetUpExceptionsWithinSuite
+>TearDownExceptions
+>TearDownExceptionsWithinSuite
+>UnknownName
+^SharedDynamicProperties
+^CanSwitchWithinDefinedAction
+^AddingFixtureFromAnAction

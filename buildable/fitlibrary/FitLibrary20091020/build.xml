@@ -1,0 +1,43 @@
+<project name="project" default="jar" basedir=".">
+
+	<property name="jar.name" value="../fitlibrary.jar" />
+
+<!--  ==================== Directories ==================== -->
+	<property name="fitLibrary.classes" value="../classes" />
+	<property name="fitLibrary.src" value="../src" />
+	<property name="lib.home" value="C:/rickLib" />
+
+<!-- ==================== Compilation Classpath =========================== -->
+	<path id="compile.classpath">
+		<pathelement location="${lib.home}/junit-4.4.jar" />
+		<pathelement location="${lib.home}/fitnesse.jar" />
+		<pathelement location="${lib.home}/poi-2.5.1-final-20040804.jar" />
+		<pathelement location="${lib.home}/fitnesserunner-1.0.5.jar" />
+		<pathelement location="${lib.home}/hamcrest-all-1.1.jar" />
+		<pathelement location="${lib.home}/jmock-2.5.1.jar" />
+		<pathelement location="${lib.home}/jmock-junit4-2.5.1.jar" />
+		<pathelement location="${lib.home}/ognl-2.7.2.jar" />
+	</path>
+
+<!-- ==================== Clean Target ==================================== -->
+
+<target name="clean" description="Delete old build directory">
+	<delete dir="${fitLibrary.classes}" />
+</target>
+
+<!-- ==================== Jar Target ================================== -->
+
+<target name="jar" depends="clean" description="Create Jar">
+	<mkdir dir="${fitLibrary.classes}" />
+	<javac srcdir="${fitLibrary.src}" 
+	       destdir="${fitLibrary.classes}" 
+	       extdirs=""
+	       debug="true"
+	       deprecation="false"
+	       optimize="true">
+	       <classpath refid="compile.classpath" />
+	</javac>
+	<jar jarfile="${jar.name}" basedir="${fitLibrary.classes}" />
+</target>
+	
+</project>

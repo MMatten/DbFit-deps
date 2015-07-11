@@ -1,0 +1,24 @@
+!3 An ${actionMethod} with no arguments is missing with only a ${sut} (no ${domainAdapter})
+!**< def
+!define test (!|fitlibrary.specify.missingMethod.InJustSut|
+
+|''actions''|
+
+|'''check'''|''total''|4|
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.missingMethod.InJustSut</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><i>actions</i></td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td class="error"><b>check</b><hr/> <span class="fit_label">Missing method: public TypeOfResult getTotal() { } OR: public TypeOfResult total() { } in class fitlibrary.specify.missingMethod.InJustSut</span></td>
+<td><i>total</i></td>
+<td>4</td>
+</tr>
+</table>-!|

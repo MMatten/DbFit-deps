@@ -1,0 +1,100 @@
+!**< def
+!define st (
+!|fitlibrary.eg.Calculator|
+
+----
+|+|ADD|
+
+)
+!define use (
+|''use template''|calculator|
+|INITIAL|ADD|ADD|
+|0|1|2|
+
+)
+!define template (
+|''template''|calculator|
+|INITIAL|ADD|ADD|
+|${st}|
+
+)
+!define test (
+!|fitlibrary.DoFixture|
+
+${use}
+
+${template}
+)
+*!
+An error is given if two parameters in a template have the same name.
+
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.DoFixture</td>
+</tr>
+</table>
+<br/><br/><table border="1" cellspacing="0">
+<tr><td><i>use template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADD</td>
+<td>ADD</td>
+</tr>
+<tr><td class="ignore">0</td>
+<td class="ignore">1</td>
+<td class="ignore">2</td>
+</tr>
+</table>
+<table>
+<tr>
+<td colspan="1">comment</td></tr>
+<tr>
+<td colspan="1">
+<table>
+<tr>
+<td>use template</td>
+<td colspan="2">calculator</td></tr>
+<tr>
+<td>INITIAL</td>
+<td>ADD</td>
+<td colspan="1">ADD</td></tr>
+<tr>
+<td class="ignore">0</td>
+<td class="ignore">1</td>
+<td colspan="1" class="ignore">2</td></tr></table></td></tr>
+<tr>
+<td colspan="1"><br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.eg.Calculator</td>
+</tr>
+</table>
+<br/><hr/>
+<br/><table border="1" cellspacing="0">
+<tr><td>+</td>
+<td>2</td>
+</tr>
+</table>
+<br/></td></tr></table>
+<br/><br/><br/><br/><table border="1" cellspacing="0">
+<tr><td><i>template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADD</td>
+<td class="error">ADD<hr/> <span class="fit_label">Duplicate parameter names</span></td>
+</tr>
+<tr><td colspan="3"><br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.eg.Calculator</td>
+</tr>
+</table>
+<br/><hr/>
+<br/><table border="1" cellspacing="0">
+<tr><td>+</td>
+<td>ADD</td>
+</tr>
+</table>
+<br/></td>
+</tr>
+</table>
+<br/><br/>-!|
+

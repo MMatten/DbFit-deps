@@ -1,0 +1,16 @@
+!**< defs
+!define list (|''item''|
+)
+**!
+|!-fitlibrary.eg.Collections-!|
+
+|''actions''|
+ * Create a list with no elements
+|list is||
+
+|''checks''|
+ * Here's the empty list to be checked
+|''ordered list''|${list}|
+ * we can simplify this to:
+|''ordered list''||
+

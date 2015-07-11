@@ -1,0 +1,49 @@
+!**< defs
+!define c1 (
+!|fitlibrary.specify.suite.SetUpWithDomain|
+
+|domain|
+----
+|act|
+)
+**!
+|!-fitlibrary.spec.SpecifySuiteFixture-!|
+|${c1}|!-<br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.suite.SimpleSetUp</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td class="pass"><i>select or</i></td>
+<td>complete</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><b>check</b></td>
+<td><i>set up count</i></td>
+<td class="pass">1</td>
+</tr>
+<tr><td><b>check</b></td>
+<td><i>tear down count</i></td>
+<td class="pass">1</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><b>check</b></td>
+<td><i>suite set up count</i></td>
+<td class="pass">1</td>
+</tr>
+<tr><td><b>check</b></td>
+<td><i>suite tear down count</i></td>
+<td class="pass">0</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><b>check</b></td>
+<td><i>total local set ups</i></td>
+<td class="pass">0</td>
+</tr>
+<tr><td><b>check</b></td>
+<td><i>total local tear downs</i></td>
+<td class="pass">0</td>
+</tr>
+</table>-!|

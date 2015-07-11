@@ -1,0 +1,7 @@
+!2 Convert plain text starting with "- " into an appropriate table at runtime:
+!|fitlibrary.specify.workflow.Sum|
+
+----
+- subtract 123
+
+|''expected test results''|0|''right''|0|''wrong''|0|''ignored''|1|''exceptions''|

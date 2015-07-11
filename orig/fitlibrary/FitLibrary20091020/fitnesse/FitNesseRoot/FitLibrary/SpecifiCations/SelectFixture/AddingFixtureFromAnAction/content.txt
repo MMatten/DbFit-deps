@@ -1,0 +1,21 @@
+!|fitlibrary.SelectFixture|
+
+|''add''|!-fitlibrary.specify.select.FirstSelect-!|''as''|first|
+
+|''select''|first|
+
+|''add named fixture''|2nd|second|
+
+|''count''|'''is'''|1|
+
+|''select''|2nd|
+
+|''count''|'''is'''|2|
+
+|''select''|first|
+
+|''count''|'''is'''|1|
+
+|''select''|2nd|
+
+|''count''|'''is'''|2|

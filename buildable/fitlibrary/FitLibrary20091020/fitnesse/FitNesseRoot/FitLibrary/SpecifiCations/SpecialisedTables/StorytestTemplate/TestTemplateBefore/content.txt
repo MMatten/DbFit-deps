@@ -1,0 +1,87 @@
+!**< def
+!define st (
+!|fitlibrary.eg.Calculator|
+
+|''total''|INITIAL|
+----
+|+|ADD|
+----
+|''total''|TOTAL|
+
+)
+!define use (
+|''use template''|calculator|
+|INITIAL|ADD|TOTAL|
+|0|0|0|
+|-1|1|0|
+
+)
+!define template (
+|''template''|calculator|
+|INITIAL|ADD|TOTAL|
+|${st}|
+
+)
+!define test (
+!|fitlibrary.DoFixture|
+
+${template}
+
+${use}
+
+)
+*!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.DoFixture</td>
+</tr>
+</table>
+<br><br><table border="1" cellspacing="0">
+<tr><td><i>template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADD</td>
+<td>TOTAL</td>
+</tr>
+<tr><td colspan="3"><br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.eg.Calculator</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><i>total</i></td>
+<td>INITIAL</td>
+</tr>
+</table>
+<hr><br><table border="1" cellspacing="0">
+<tr><td>+</td>
+<td>ADD</td>
+</tr>
+</table>
+<hr><br><table border="1" cellspacing="0">
+<tr><td><i>total</i></td>
+<td>TOTAL</td>
+</tr>
+</table>
+<br></td>
+</tr>
+</table>
+<br><br><br><br><table border="1" cellspacing="0">
+<tr><td class="error"><i>use template</i><hr/> <span class="fit_label">Missing definition for template calculator</span></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADD</td>
+<td>TOTAL</td>
+</tr>
+<tr><td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>-1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</table>
+<br><br><br>-!|
+

@@ -1,0 +1,7 @@
+|address is|NAME|
+
+|get|@{place.address}|'''is'''|NAME|
+----
+|address is at|NAME|
+
+|get|@{place.address}|'''is'''|NAME|

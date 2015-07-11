@@ -1,0 +1,26 @@
+ * Information can be logged, to be included in a folded area after the table concerned.
+ * This special action executions the action in the rest of the row and adds the result, as text.
+ * Text logged within the call to a ''defined action'' is included after the table containing the (outermost) call.
+ * The text can also be logged from within do fixture code, by calling the method ''logAfterTable()''.
+
+!|fitlibrary.specify.definedAction.DefinedActionUnderTest|
+
+|''clear defined actions''|
+
+|''define actions at''|.FitLibrary.SpecifiCations.DoWorkflow.SpecialActions.TestShowAfter.DefinedActions|
+
+|'''show after'''|''with''|//input[@id="userName"]|''enter text''|chad|
+
+|''login''|rick|''with''||
+
+|''login2''|rick|''with''||
+
+|'''show after'''|get|<i>Some text</i>|
+
+|''set''|message|''to''|!-MessaGe-!|
+
+|'''show after'''|get|<b>Some more @{message}</b>|
+
+|'''show after'''|''count''|
+
+|'''show after'''|''a void''|

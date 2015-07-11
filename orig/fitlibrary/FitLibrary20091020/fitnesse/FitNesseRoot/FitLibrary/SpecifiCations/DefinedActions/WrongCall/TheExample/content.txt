@@ -1,0 +1,39 @@
+!**< def
+!define test (
+!|fitlibrary.DoFixture|
+
+|set expand defined actions|true|
+
+|define actions at|.FitLibrary.SpecifiCations.DefinedActions.WrongCall.DefinedActions|
+
+|act duplicate|1|
+)
+
+*!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.DoFixture</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td>set expand defined actions</td>
+<td>true</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td class="error">define actions at<hr/> <span class="fit_label">Duplicate defined action: actDuplicate</span></td>
+<td><a href="FitLibrary.SpecifiCations.DefinedActions.WrongCall.DefinedActions">.FitLibrary.SpecifiCations.DefinedActions.WrongCall.DefinedActions</a></td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td class="ignore">act duplicate</td>
+<td>1</td>
+<td bgcolor=#DADAFF> <span class="fit_label">Defined action call:</span>
+<br/><br/>
+<table>
+<tr><td>show</td><td>get</td><td>1</td>
+<td bgcolor=#C0C0FF>1</td></tr>
+</table></td></tr>
+</table>-!|
+
+

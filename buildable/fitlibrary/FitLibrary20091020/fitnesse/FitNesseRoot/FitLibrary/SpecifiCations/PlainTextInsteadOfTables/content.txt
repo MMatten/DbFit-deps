@@ -1,0 +1,11 @@
+${doFixture} tables can be written as plain text. These are interpreted as calls to fixture methods or defined actions. They are shown as tables in the report.
+
+>FixtureMethods
+>FixtureGetterMethods
+^AmbiguityAcrossFixtureMethods
+
+^DefinedActionCalls
+^DefinedActionCallsWithClasses
+
+^AmbiguityAcrossDefinedActions
+^AmbiguityAcrossFixtureMethodsAndDefinedActions

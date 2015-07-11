@@ -1,0 +1,65 @@
+!2 Convert plain text starting with "- " into an appropriate table at runtime:
+!**< def
+!define test (!|fitlibrary.specify.workflow.Sum|
+
+----
+- add 1
+- add 2
+- the complete sum *is* 3
+- add 100
+- sum *matches* ..3
+- sum *is not* 4
+- sum *becomes* 103
+- sum *does not match* .3.
+- show sum
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.workflow.Sum</td>
+</tr>
+</table>
+<br/><hr/>
+<br/>
+<table><tr>
+<td><i>add</i></td>
+<td>1</td></tr></table>
+<br/>
+<table><tr>
+<td><i>add</i></td>
+<td>2</td></tr></table>
+<br/>
+<table><tr>
+<td><i>the complete sum</i></td>
+<td><b>is</b></td>
+<td class="pass"> 3</td></tr></table>
+<br/>
+<table><tr>
+<td><i>add</i></td>
+<td>100</td></tr></table>
+<br/>
+<table><tr>
+<td><i>sum </i></td>
+<td><b>matches</b></td>
+<td class="pass"> ..3</td></tr></table>
+<br/>
+<table><tr>
+<td><i>sum </i></td>
+<td><b>is not</b></td>
+<td class="pass"> 4</td></tr></table>
+<br/>
+<table><tr>
+<td><i>sum </i></td>
+<td><b>becomes</b></td>
+<td class="pass"> 103</td></tr></table>
+<br/>
+<table><tr>
+<td><i>sum </i></td>
+<td><b>does not match</b></td>
+<td class="pass"> .3.</td></tr></table>
+<br/>
+<table><tr>
+<td><b>show</b></td>
+<td><i> sum</i></td>
+<td bgcolor=#C0C0FF>103</td></tr></table>
+<br/>-!|

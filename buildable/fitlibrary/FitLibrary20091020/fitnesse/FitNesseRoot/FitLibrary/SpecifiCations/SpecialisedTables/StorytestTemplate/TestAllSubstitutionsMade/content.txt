@@ -1,0 +1,145 @@
+!**< def
+!define st (
+!|fitlibrary.eg.Calculator|
+
+|''INITIAL''|INITIAL|
+|'''INITIAL'''|INITIaL|
+----
+|ADAADA|ADA ADA|
+|ADA|ADADA|aDADA|
+|''none''|
+----
+|TOTALS|TOTAL|
+
+)
+!define use (
+|''use template''|calculator|
+|INITIAL|ADA|TOTAL|
+|0|1|2|
+
+)
+!define template (
+|''template''|calculator|
+|INITIAL|ADA|TOTAL|
+|${st}|
+
+)
+!define test (
+!|fitlibrary.DoFixture|
+
+${use}
+${template}
+)
+*!
+All template parameters that match by case are substituted, from left to right. There may be several parameter uses in a cell.
+
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.DoFixture</td>
+</tr>
+</table>
+<br/><br/><table border="1" cellspacing="0">
+<tr><td><i>use template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADA</td>
+<td>TOTAL</td>
+</tr>
+<tr><td class="error">0<hr/> <span class="fit_label"></span></td>
+<td>1</td>
+<td>2</td>
+</tr>
+</table>
+<table>
+<tr>
+<td colspan="1">comment</td></tr>
+<tr>
+<td colspan="1">
+<table>
+<tr>
+<td>use template</td>
+<td colspan="2">calculator</td></tr>
+<tr>
+<td>INITIAL</td>
+<td>ADA</td>
+<td colspan="1">TOTAL</td></tr>
+<tr>
+<td class="error">0<hr/> <span class="fit_label"></span></td>
+<td>1</td>
+<td colspan="1">2</td></tr></table></td></tr>
+<tr>
+<td colspan="1"><br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.eg.Calculator</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td class="error">0<hr/> <span class="fit_label"></span></td>
+<td>0</td>
+</tr>
+<tr><td class="error">0<hr/> <span class="fit_label"></span></td>
+<td>INITIaL</td>
+</tr>
+</table>
+<hr/>
+<br/><table border="1" cellspacing="0">
+<tr><td class="error">11<hr/> <span class="fit_label"></span></td>
+<td colspan="2">1 1</td>
+</tr>
+<tr><td class="error">1<hr/> <span class="fit_label"></span></td>
+<td>1DA</td>
+<td>aD1</td>
+</tr>
+<tr><td colspan="3" class="error"><i>none</i><hr/> <span class="fit_label"></span></td>
+</tr>
+</table>
+<hr/>
+<br/><table border="1" cellspacing="0">
+<tr><td class="error">2S<hr/> <span class="fit_label"></span></td>
+<td>2</td>
+</tr>
+</table>
+<br/></td></tr></table>
+<br/><br/><br/><table border="1" cellspacing="0">
+<tr><td><i>template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADA</td>
+<td>TOTAL</td>
+</tr>
+<tr><td colspan="3"><br/><table border="1" cellspacing="0">
+<tr><td>fitlibrary.eg.Calculator</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td><i>INITIAL</i></td>
+<td>INITIAL</td>
+</tr>
+<tr><td><b>INITIAL</b></td>
+<td>INITIaL</td>
+</tr>
+</table>
+<hr/>
+<br/><table border="1" cellspacing="0">
+<tr><td>ADAADA</td>
+<td colspan="2">ADA ADA</td>
+</tr>
+<tr><td>ADA</td>
+<td>ADADA</td>
+<td>aDADA</td>
+</tr>
+<tr><td colspan="3"><i>none</i></td>
+</tr>
+</table>
+<hr/>
+<br/><table border="1" cellspacing="0">
+<tr><td>TOTALS</td>
+<td>TOTAL</td>
+</tr>
+</table>
+<br/></td>
+</tr>
+</table>
+<br/><br/>-!|
+

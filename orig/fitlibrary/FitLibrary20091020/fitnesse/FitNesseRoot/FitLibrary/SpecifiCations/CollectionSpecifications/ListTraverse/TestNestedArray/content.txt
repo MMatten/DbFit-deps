@@ -1,0 +1,177 @@
+!2 An ''!-ArrayFixture-!'' table may have nested tables (for arrays, lists, etc)
+!**< def
+!define apple (
+|''id''|''count''|
+|a|1|
+|b|2|
+
+)
+!define orange (
+|''id''|
+|c|
+
+)
+!define test (
+!|fitlibrary.specify.NestedLists|
+
+|''nested''|
+|''name''|''elements''|
+|apple|${apple}|
+|orange|${orange}|
+|pear||
+
+)
+
+!define apple2 (
+|''id''|''count''|
+|a|1|
+
+)
+!define orange2 (
+|''id''|
+|c|
+|d|
+
+)
+!define pear2 (
+|''id''|
+|e|
+
+)
+!define test2 (
+!|fitlibrary.specify.NestedLists|
+
+|''nested''|
+|''name''|''elements''|
+|apple|${apple2}|
+|orange|${orange2}|
+|pear|${pear2}|
+
+)
+**!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.NestedLists</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td colspan="2"><i>nested</i></td>
+</tr>
+<tr><td><i>name</i></td>
+<td><i>elements</i></td>
+</tr>
+<tr><td class="pass">apple</td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>id</i></td>
+<td><i>count</i></td>
+</tr>
+<tr><td class="pass">a</td>
+<td class="pass">1</td>
+</tr>
+<tr><td class="pass">b</td>
+<td class="pass">2</td>
+</tr>
+</table>
+<br></td>
+</tr>
+<tr><td class="pass">orange</td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>id</i></td>
+</tr>
+<tr><td class="pass">c</td>
+</tr>
+</table>
+<br></td>
+</tr>
+<tr><td class="pass">pear</td>
+<td class="pass">&nbsp;</td>
+</tr>
+</table>
+<br>-!|
+
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test2}|!-<br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.NestedLists</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td colspan="2"><i>nested</i></td>
+</tr>
+<tr><td><i>name</i></td>
+<td><i>elements</i></td>
+</tr>
+<tr><td class="pass">apple</td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>id</i></td>
+<td><i>count</i></td>
+</tr>
+<tr><td class="pass">a</td>
+<td class="pass">1</td>
+</tr>
+<tr>
+<td class="fail"> <span class="fit_grey">b</span> <span class="fit_label">surplus</span></td>
+<td> <span class="fit_grey">2</span></td></tr></table>
+<br></td>
+</tr>
+<tr><td class="pass">orange</td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>id</i></td>
+</tr>
+<tr><td class="pass">c</td>
+</tr>
+<tr><td class="fail">d <span class="fit_label">missing</span></td>
+</tr>
+</table>
+<br></td>
+</tr>
+<tr><td class="pass">pear</td>
+<td><br><table border="1" cellspacing="0">
+<tr><td><i>id</i></td>
+</tr>
+<tr><td class="fail">e <span class="fit_label">missing</span></td>
+</tr>
+</table>
+<br></td>
+</tr>
+</table>
+<br>-!|
+
+|!-fitlibrary.spec.SpecifyFixture-!|
+|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.NestedLists</td></tr>
+</table>
+<table border="1" cellspacing="0">
+<tr><td colspan="2"><i>nested</i></td></tr>
+<tr><td><i>name</i></td><td><i>elements</i></td></tr>
+<tr><td>apple</td><td><table border="1" cellspacing="0">
+<tr><td><i>identity</i></td><td><i>count</i></td></tr>
+<tr><td>a</td><td>1</td></tr>
+</table></td></tr>
+<tr><td>orange</td><td><table border="1" cellspacing="0">
+<tr><td><i>id</i></td></tr>
+<tr><td>d</td></tr>
+</table></td></tr>
+<tr><td>pear</td><td><table border="1" cellspacing="0">
+<tr><td><i>id</i></td><td><i>count</i></td></tr>
+<tr><td>a</td><td>1</td></tr>
+</table></td></tr>
+</table>-!|!-<table border="1" cellspacing="0">
+<tr><td>fitlibrary.specify.NestedLists</td></tr>
+</table>
+<table border="1" cellspacing="0">
+<tr><td colspan="2"><i>nested</i></td></tr>
+<tr><td><i>name</i></td><td><i>elements</i></td></tr>
+<tr><td class="pass">apple</td><td><table border="1" cellspacing="0">
+<tr><td class="error"><i>identity</i><hr/> <span class="fit_label">Could not find property identity</span></td><td><i>count</i></td></tr>
+<tr><td>a</td><td>1</td></tr>
+</table></td></tr>
+<tr><td class="pass">orange</td><td><table border="1" cellspacing="0">
+<tr><td><i>id</i></td></tr>
+<tr><td class="fail">d <span class="fit_label">missing</span></td></tr>
+<tr>
+<td class="fail"> <span class="fit_grey">c</span> <span class="fit_label">surplus</span></td></tr></table></td></tr>
+<tr><td class="pass">pear</td><td><table border="1" cellspacing="0">
+<tr><td><i>id</i></td><td><i>count</i></td></tr>
+<tr><td class="fail">a <span class="fit_label">missing</span></td><td>1</td></tr>
+</table></td></tr>
+</table>-!|

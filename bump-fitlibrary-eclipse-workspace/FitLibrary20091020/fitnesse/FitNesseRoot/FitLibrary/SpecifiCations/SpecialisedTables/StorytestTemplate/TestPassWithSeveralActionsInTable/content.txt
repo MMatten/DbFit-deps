@@ -1,0 +1,90 @@
+!**< def
+!define st (
+!|fitlibrary.eg.Calculator|
+
+|''total''|INITIAL|
+----
+|+|ADD2|
+|+|ADD2|
+----
+|''total''|TOTAL|
+
+)
+!define use (
+|''use template''|calculator|
+|INITIAL|ADD2|TOTAL|
+|0|0|0|
+|-1|1|1|
+
+)
+!define template (
+|''template''|calculator|
+|INITIAL|ADD2|TOTAL|
+|${st}|
+
+)
+!define test (
+!|fitlibrary.DoFixture|
+
+${use}
+
+${template}
+)
+*!
+|!-fitlibrary.spec.SpecifyFixture-!|
+|${test}|!-<br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.DoFixture</td>
+</tr>
+</table>
+<br><br><table border="1" cellspacing="0">
+<tr><td><i>use template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADD2</td>
+<td>TOTAL</td>
+</tr>
+<tr class="pass"><td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="pass"><td>-1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</table>
+<br><br><br><br><table border="1" cellspacing="0">
+<tr><td><i>template</i></td>
+<td colspan="2">calculator</td>
+</tr>
+<tr><td>INITIAL</td>
+<td>ADD2</td>
+<td>TOTAL</td>
+</tr>
+<tr><td colspan="3"><br><table border="1" cellspacing="0">
+<tr><td>fitlibrary.eg.Calculator</td>
+</tr>
+</table>
+<br><table border="1" cellspacing="0">
+<tr><td><i>total</i></td>
+<td>INITIAL</td>
+</tr>
+</table>
+<hr><br><table border="1" cellspacing="0">
+<tr><td>+</td>
+<td>ADD2</td>
+</tr>
+<tr><td>+</td>
+<td>ADD2</td>
+</tr>
+</table>
+<hr><br><table border="1" cellspacing="0">
+<tr><td><i>total</i></td>
+<td>TOTAL</td>
+</tr>
+</table>
+<br></td>
+</tr>
+</table>
+<br><br>-!|
+
